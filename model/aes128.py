@@ -23,8 +23,7 @@ INV_SBOX = bytearray(256)
 for i in range(256):
     INV_SBOX[SBOX[i]] = i
 
-RCON = (0x01, 0x02, 0x04, 0x08, 0x10,
-        0x20, 0x40, 0x80, 0x1B, 0x36)
+RCON = (0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1B, 0x36)
 
 
 def multiply(a, b):
@@ -41,12 +40,12 @@ def multiply(a, b):
     return result
 
 
-def expand_key(key):
+def key_expansion(key):
     """Turn one 16-byte key into eleven round keys."""
     data = list(key)
     for round_number in range(10):
-        word = data[-3:] + data[-4:-3]       # RotWord
-        word = [SBOX[x] for x in word]       # SubWord
+        word = data[-3:] + data[-4:-3]  # RotWord
+        word = [SBOX[x] for x in word]  # SubWord
         word[0] ^= RCON[round_number]
 
         for byte in word:
@@ -54,7 +53,7 @@ def expand_key(key):
         for _ in range(12):
             data.append(data[-16] ^ data[-4])
 
-    return [bytes(data[i:i + 16]) for i in range(0, 176, 16)]
+    return [bytes(data[i : i + 16]) for i in range(0, 176, 16)]
 
 
 def add_round_key(state, round_key):
@@ -78,24 +77,22 @@ def shift_rows(state, inverse=False):
 
 def mix_columns(state, inverse=False):
     if inverse:
-        matrix = ((14, 11, 13, 9), (9, 14, 11, 13),
-                  (13, 9, 14, 11), (11, 13, 9, 14))
+        matrix = ((14, 11, 13, 9), (9, 14, 11, 13), (13, 9, 14, 11), (11, 13, 9, 14))
     else:
-        matrix = ((2, 3, 1, 1), (1, 2, 3, 1),
-                  (1, 1, 2, 3), (3, 1, 1, 2))
+        matrix = ((2, 3, 1, 1), (1, 2, 3, 1), (1, 1, 2, 3), (3, 1, 1, 2))
 
     output = bytearray(16)
     for column in range(4):
-        old_column = state[4 * column:4 * column + 4]
+        old_column = state[4 * column : 4 * column + 4]
         for row in range(4):
             for i in range(4):
                 output[4 * column + row] ^= multiply(matrix[row][i], old_column[i])
     return bytes(output)
 
 
-def encrypt_block(plaintext, key):
+def encrypt(plaintext, key):
     """Encrypt one 16-byte block with a 16-byte key."""
-    round_keys = expand_key(key)
+    round_keys = key_expansion(key)
     state = add_round_key(plaintext, round_keys[0])
 
     for round_number in range(1, 10):
@@ -109,9 +106,9 @@ def encrypt_block(plaintext, key):
     return add_round_key(state, round_keys[10])
 
 
-def decrypt_block(ciphertext, key):
+def decrypt(ciphertext, key):
     """Decrypt one 16-byte block with a 16-byte key."""
-    round_keys = expand_key(key)
+    round_keys = key_expansion(key)
     state = add_round_key(ciphertext, round_keys[10])
 
     for round_number in range(9, 0, -1):
@@ -128,7 +125,7 @@ def decrypt_block(ciphertext, key):
 if __name__ == "__main__":
     key = bytes.fromhex("000102030405060708090a0b0c0d0e0f")
     plaintext = bytes.fromhex("00112233445566778899aabbccddeeff")
-    ciphertext = encrypt_block(plaintext, key)
+    ciphertext = encrypt(plaintext, key)
 
     print("ciphertext:", ciphertext.hex())
-    print("decrypted: ", decrypt_block(ciphertext, key).hex())
+    print("decrypted: ", decrypt(ciphertext, key).hex())
