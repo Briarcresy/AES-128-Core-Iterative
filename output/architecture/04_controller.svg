@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1160" viewBox="0 0 1600 1160">
+<rect x="0" y="0" width="1600" height="1160" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="45" y="49.0" font-family="DejaVu Sans, sans-serif" font-size="30" font-weight="700" text-anchor="start" fill="#202733">Controller Overview</text>
+<text x="45" y="79.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#626B78">Three-phase controller with a shared round counter and a one-clock done pulse</text>
+<text x="1555" y="48.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="end" fill="#626B78">FIG. 04</text>
+<polyline points="45,96 1555,96" fill="none" stroke="#CCD2D9" stroke-width="1" stroke-linejoin="round"/>
+<rect x="45" y="120" width="1510" height="360" rx="0" fill="white" stroke="#CCD2D9" stroke-width="1"/>
+<text x="63" y="149.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#636879">Phase Sequencer  |  controller</text>
+<rect x="180" y="230" width="260" height="115" rx="0" fill="#F5F6F8" stroke="#636879" stroke-width="1.6"/>
+<text x="310.0" y="273.22" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" text-anchor="middle" fill="#636879">IDLE</text>
+<text x="310.0" y="301.22" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">Load data_in</text>
+<text x="310.0" y="322.82000000000005" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">Accept start</text>
+<rect x="665" y="230" width="300" height="115" rx="0" fill="#F5F6F8" stroke="#636879" stroke-width="1.6"/>
+<text x="815.0" y="273.22" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" text-anchor="middle" fill="#636879">EXPAND</text>
+<text x="815.0" y="301.22" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">Write next round key</text>
+<text x="815.0" y="322.82000000000005" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">10 clocks</text>
+<rect x="1190" y="230" width="260" height="115" rx="0" fill="#F5F6F8" stroke="#636879" stroke-width="1.6"/>
+<text x="1320.0" y="273.22" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" text-anchor="middle" fill="#636879">ROUND</text>
+<text x="1320.0" y="301.22" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">Update State Register</text>
+<text x="1320.0" y="322.82000000000005" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">10 clocks</text>
+<polyline points="440,287 665,287" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="665,287 655.0,282.5 655.0,291.5" fill="#636879"/>
+<rect x="509.0" y="249" width="86.0" height="21.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="552" y="266.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#636879">start = 1</text>
+<text x="552" y="317.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#636879">count ← 0</text>
+<polyline points="965,287 1190,287" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="1190,287 1180.0,282.5 1180.0,291.5" fill="#636879"/>
+<rect x="1030.0" y="249" width="94.0" height="21.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1077" y="266.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#636879">count = 9</text>
+<text x="1077" y="317.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#636879">count ← 0</text>
+<polyline points="1320,230 1320,186 310,186 310,230" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="310,230 314.5,220.0 305.5,220.0" fill="#636879"/>
+<rect x="658.5" y="162" width="313.0" height="21.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="815" y="179.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#636879">count = 9 / done ← 1; count holds 9</text>
+<text x="310" y="380.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#636879">start = 0: stay in IDLE</text>
+<text x="815" y="380.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#636879">count &lt; 9: stay; count ← count + 1</text>
+<text x="1320" y="380.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#636879">count &lt; 9: stay;</text>
+<text x="1320" y="405.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#636879">count ← count + 1</text>
+<polyline points="75,421 1525,421" fill="none" stroke="#CCD2D9" stroke-width="1" stroke-linejoin="round"/>
+<text x="75" y="452.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#636879">Synchronous rst: phase ← IDLE; count ← 0; done ← 0.</text>
+<text x="1525" y="452.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="end" fill="#636879">start is sampled only in IDLE.</text>
+<rect x="45" y="505" width="930" height="300" rx="0" fill="white" stroke="#CCD2D9" stroke-width="1"/>
+<text x="63" y="534.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#636879">State Input MUX and Key Write Decode</text>
+<rect x="65" y="554" width="890" height="215" rx="0" fill="white" stroke="#CCD2D9" stroke-width="1"/>
+<rect x="65" y="554" width="890" height="43" rx="0" fill="#F5F6F8" stroke="none" stroke-width="1.6"/>
+<text x="77" y="582.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="700" text-anchor="start" fill="#636879">phase</text>
+<text x="290" y="582.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="700" text-anchor="start" fill="#636879">count</text>
+<text x="410" y="582.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="700" text-anchor="start" fill="#636879">data_sel</text>
+<text x="545" y="582.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="700" text-anchor="start" fill="#636879">key_step</text>
+<text x="680" y="582.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="700" text-anchor="start" fill="#636879">Selected state source</text>
+<polyline points="65,597 955,597" fill="none" stroke="#CCD2D9" stroke-width="1" stroke-linejoin="round"/>
+<text x="77" y="625.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">IDLE</text>
+<text x="290" y="625.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">any</text>
+<text x="410" y="625.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">0</text>
+<text x="545" y="625.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">0</text>
+<text x="680" y="625.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">data_in</text>
+<polyline points="65,640 955,640" fill="none" stroke="#CCD2D9" stroke-width="1" stroke-linejoin="round"/>
+<text x="77" y="668.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">EXPAND</text>
+<text x="290" y="668.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">0–8</text>
+<text x="410" y="668.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">3</text>
+<text x="545" y="668.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">1</text>
+<text x="680" y="668.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">State hold / feedback</text>
+<polyline points="65,683 955,683" fill="none" stroke="#CCD2D9" stroke-width="1" stroke-linejoin="round"/>
+<text x="77" y="711.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">EXPAND</text>
+<text x="290" y="711.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">9</text>
+<text x="410" y="711.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">1</text>
+<text x="545" y="711.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">1</text>
+<text x="680" y="711.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">Initial AddRoundKey</text>
+<polyline points="65,726 955,726" fill="none" stroke="#CCD2D9" stroke-width="1" stroke-linejoin="round"/>
+<text x="77" y="754.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">ROUND</text>
+<text x="290" y="754.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">0–9</text>
+<text x="410" y="754.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">2</text>
+<text x="545" y="754.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">0</text>
+<text x="680" y="754.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#202733">AES Round result</text>
+<polyline points="278,554 278,769" fill="none" stroke="#CCD2D9" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="398,554 398,769" fill="none" stroke="#CCD2D9" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="533,554 533,769" fill="none" stroke="#CCD2D9" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="668,554 668,769" fill="none" stroke="#CCD2D9" stroke-width="1" stroke-linejoin="round"/>
+<rect x="1000" y="505" width="555" height="300" rx="0" fill="white" stroke="#CCD2D9" stroke-width="1"/>
+<text x="1018" y="534.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#636879">Registers and Status Outputs</text>
+<rect x="1025" y="554" width="240" height="80" rx="0" fill="#F5F6F8" stroke="#636879" stroke-width="1.6"/>
+<text x="1145.0" y="590.22" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" text-anchor="middle" fill="#636879">Round Counter</text>
+<text x="1145.0" y="618.22" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">count[3:0]</text>
+<rect x="1290" y="554" width="240" height="80" rx="0" fill="#F5F6F8" stroke="#636879" stroke-width="1.6"/>
+<text x="1410.0" y="590.22" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" text-anchor="middle" fill="#636879">Done Register</text>
+<text x="1410.0" y="618.22" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">done</text>
+<text x="1025" y="668.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#636879">count is reused in EXPAND and ROUND.</text>
+<text x="1025" y="700.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#636879">busy = (phase != IDLE)</text>
+<text x="1025" y="732.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#636879">final_step = (count == 9)</text>
+<text x="1025" y="764.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#636879">done clears on the next clock.</text>
+<rect x="45" y="830" width="1510" height="255" rx="0" fill="white" stroke="#CCD2D9" stroke-width="1"/>
+<text x="63" y="859.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#636879">Transaction Timing  |  rising clock edges</text>
+<rect x="75" y="901" width="230" height="88" rx="0" fill="#F5F6F8" stroke="#636879" stroke-width="1.6"/>
+<text x="190.0" y="930.72" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" text-anchor="middle" fill="#636879">Accept start</text>
+<text x="190.0" y="958.72" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">Cycle 0</text>
+<text x="190.0" y="980.32" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">Capture data_in</text>
+<rect x="355" y="901" width="395" height="88" rx="0" fill="#FBF5ED" stroke="#96551B" stroke-width="1.6"/>
+<text x="552.5" y="930.72" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" text-anchor="middle" fill="#96551B">EXPAND</text>
+<text x="552.5" y="958.72" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#96551B">Cycles 1–10</text>
+<text x="552.5" y="980.32" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#96551B">Generate K1–K10</text>
+<rect x="800" y="901" width="395" height="88" rx="0" fill="#F1F6FA" stroke="#215D88" stroke-width="1.6"/>
+<text x="997.5" y="930.72" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" text-anchor="middle" fill="#215D88">ROUND</text>
+<text x="997.5" y="958.72" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">Cycles 11–20</text>
+<text x="997.5" y="980.32" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">Apply rounds 1–10</text>
+<rect x="1245" y="901" width="280" height="88" rx="0" fill="#F5F6F8" stroke="#636879" stroke-width="1.6"/>
+<text x="1385.0" y="930.72" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" text-anchor="middle" fill="#636879">Next IDLE clock</text>
+<text x="1385.0" y="958.72" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">Cycle 21</text>
+<text x="1385.0" y="980.32" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">Reload data_in</text>
+<polyline points="305,945 355,945" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="355,945 345.0,940.5 345.0,949.5" fill="#636879"/>
+<polyline points="750,945 800,945" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="800,945 790.0,940.5 790.0,949.5" fill="#636879"/>
+<polyline points="1195,945 1245,945" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="1245,945 1235.0,940.5 1235.0,949.5" fill="#636879"/>
+<text x="75" y="1027.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#96551B">Final EXPAND edge: K10 write + Initial AddRoundKey.</text>
+<text x="800" y="1027.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#215D88">Final ROUND edge: ciphertext; done = 1; busy = 0.</text>
+<text x="75" y="1060.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#626B78">final_step is a count comparison only; it is also high at the end of EXPAND and may remain high in IDLE.</text>
+<polyline points="45,1111 1555,1111" fill="none" stroke="#CCD2D9" stroke-width="1" stroke-linejoin="round"/>
+<text x="45" y="1136.0" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#626B78">Source: rtl/core/controller.v:13–57; aes128_iterative_core.v:54–71</text>
+<text x="1555" y="1136.0" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="end" fill="#626B78">RTL-derived | Verilog-2005</text>
+</svg>

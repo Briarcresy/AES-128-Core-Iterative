@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1400" viewBox="0 0 1800 1400">
+<rect x="0" y="0" width="1800" height="1400" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="45" y="49.0" font-family="DejaVu Sans, sans-serif" font-size="30" font-weight="700" text-anchor="start" fill="#202733">Top-Level Architecture</text>
+<text x="45" y="79.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#626B78">aes128_iterative_core | 128-bit iterative encryption | 10 key-expansion clocks + 10 round clocks</text>
+<text x="1755" y="48.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="end" fill="#626B78">FIG. 01</text>
+<polyline points="45,96 1755,96" fill="none" stroke="#CCD2D9" stroke-width="1" stroke-linejoin="round"/>
+<rect x="45" y="125" width="1710" height="290" rx="0" fill="white" stroke="#CCD2D9" stroke-width="1"/>
+<text x="63" y="154.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#636879">Control Path</text>
+<rect x="45" y="445" width="1710" height="310" rx="0" fill="white" stroke="#CCD2D9" stroke-width="1"/>
+<text x="63" y="474.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#96551B">Round-Key Path</text>
+<rect x="45" y="785" width="1710" height="470" rx="0" fill="white" stroke="#CCD2D9" stroke-width="1"/>
+<text x="63" y="814.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#215D88">State / Data Path</text>
+<rect x="275" y="157" width="665" height="205" rx="0" fill="#F5F6F8" stroke="#636879" stroke-width="1.6"/>
+<text x="295" y="184.0" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="#636879">Controller</text>
+<text x="295" y="209.0" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#636879">u_controller : controller</text>
+<rect x="310" y="232" width="275" height="97" rx="0" fill="#F5F6F8" stroke="#636879" stroke-width="1.6"/>
+<text x="447.5" y="265.58" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="700" text-anchor="middle" fill="#636879">Phase / Control Logic</text>
+<text x="447.5" y="293.58" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">phase[1:0], done</text>
+<text x="447.5" y="315.18" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">IDLE / EXPAND / ROUND</text>
+<rect x="625" y="232" width="280" height="97" rx="0" fill="#F5F6F8" stroke="#636879" stroke-width="1.6"/>
+<text x="765.0" y="276.4" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" text-anchor="middle" fill="#636879">Round Counter</text>
+<text x="765.0" y="304.4" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">count[3:0] : 0 ... 9</text>
+<polyline points="585,263 625,263" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="625,263 615.0,258.5 615.0,267.5" fill="#636879"/>
+<polyline points="660,329 660,343 470,343 470,329" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="470,329 465.5,339.0 474.5,339.0" fill="#636879"/>
+<text x="88" y="227.0" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="400" text-anchor="start" fill="#636879">clk</text>
+<polyline points="88,235 275,235" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="275,235 265.0,230.5 265.0,239.5" fill="#636879"/>
+<text x="88" y="265.0" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="400" text-anchor="start" fill="#636879">rst</text>
+<polyline points="88,273 275,273" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="275,273 265.0,268.5 265.0,277.5" fill="#636879"/>
+<text x="88" y="302.0" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="400" text-anchor="start" fill="#636879">start</text>
+<polyline points="88,310 275,310" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="275,310 265.0,305.5 265.0,314.5" fill="#636879"/>
+<polyline points="940,173 1660,173" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="1660,173 1650.0,168.5 1650.0,177.5" fill="#636879"/>
+<rect x="1662.0" y="160" width="56.0" height="23.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1690" y="179.0" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="400" text-anchor="middle" fill="#636879">busy</text>
+<polyline points="940,207 1660,207" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="1660,207 1650.0,202.5 1650.0,211.5" fill="#636879"/>
+<rect x="1661.0" y="194" width="58.0" height="23.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1690" y="213.0" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="400" text-anchor="middle" fill="#636879">done</text>
+<rect x="1030" y="232" width="390" height="130" rx="0" fill="white" stroke="#636879" stroke-width="1.6"/>
+<text x="1225" y="260.0" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" text-anchor="middle" fill="#636879">Round Index Generator</text>
+<rect x="1065" y="282" width="315" height="57" rx="0" fill="#F5F6F8" stroke="#636879" stroke-width="1.6"/>
+<text x="1222.5" y="317.22" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" text-anchor="middle" fill="#636879">+1 Incrementer</text>
+<polyline points="905,303 1065,303" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="1065,303 1055.0,298.5 1055.0,307.5" fill="#636879"/>
+<rect x="933.5" y="272" width="93.0" height="20.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="980" y="288.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">count[3:0]</text>
+<polyline points="1380,312 1635,312" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="1635,312 1625.0,307.5 1625.0,316.5" fill="#636879"/>
+<rect x="1481.0" y="275" width="158.0" height="21.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1560" y="292.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#636879">round_index[3:0]</text>
+<text x="1490" y="341.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#636879">count + 1</text>
+<polyline points="420,362 420,391" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="420,391 424.5,381.0 415.5,381.0" fill="#636879"/>
+<rect x="358.0" y="392" width="124.0" height="21.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="420" y="409.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#636879">data_sel[1:0]</text>
+<polyline points="675,362 675,391" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="675,391 679.5,381.0 670.5,381.0" fill="#636879"/>
+<rect x="632.0" y="392" width="86.0" height="21.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="675" y="409.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#636879">key_step</text>
+<polyline points="875,362 875,391" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="875,391 879.5,381.0 870.5,381.0" fill="#636879"/>
+<rect x="828.0" y="392" width="94.0" height="21.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="875" y="409.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#636879">final_step</text>
+<rect x="365" y="525" width="260" height="125" rx="0" fill="#FBF5ED" stroke="#96551B" stroke-width="1.6"/>
+<text x="495" y="553.0" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" text-anchor="middle" fill="#96551B">Previous Key MUX</text>
+<text x="390" y="584.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#96551B">count = 0: key</text>
+<text x="390" y="625.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#96551B">count &gt; 0: previous key</text>
+<rect x="815" y="525" width="285" height="125" rx="0" fill="#FBF5ED" stroke="#96551B" stroke-width="1.6"/>
+<text x="957.5" y="573.22" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" text-anchor="middle" fill="#96551B">Key Expansion</text>
+<text x="957.5" y="601.22" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#96551B">u_key_expansion</text>
+<text x="957.5" y="622.82" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#96551B">key_expansion</text>
+<rect x="1250" y="525" width="390" height="125" rx="0" fill="#FBF5ED" stroke="#96551B" stroke-width="1.6"/>
+<text x="1445" y="557.0" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" text-anchor="middle" fill="#96551B">Round Key Registers</text>
+<text x="1445" y="585.0" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#96551B">(10 × 128-bit)</text>
+<text x="1445" y="612.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="#96551B">round_keys[1:10]</text>
+<text x="1445" y="637.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#96551B">Write enable: key_step</text>
+<text x="78" y="553.0" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="400" text-anchor="start" fill="#96551B">key[127:0]</text>
+<polyline points="78,568 365,568" fill="none" stroke="#96551B" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="365,568 353.0,563.5 353.0,572.5" fill="#96551B"/>
+<circle cx="245" cy="568" r="4" fill="#96551B"/>
+<polyline points="625,588 815,588" fill="none" stroke="#96551B" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="815,588 803.0,583.5 803.0,592.5" fill="#96551B"/>
+<rect x="650.0" y="556" width="140.0" height="21.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="720" y="573.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#96551B">old_key[127:0]</text>
+<polyline points="1100,588 1250,588" fill="none" stroke="#96551B" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="1250,588 1238.0,583.5 1238.0,592.5" fill="#96551B"/>
+<rect x="1131.0" y="549" width="88.0" height="21.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1175" y="566.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#96551B">next_key</text>
+<text x="1175" y="612.0" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="middle" fill="#96551B">128</text>
+<polyline points="1340,650 1340,714 310,714 310,617 365,617" fill="none" stroke="#96551B" stroke-width="3.5" stroke-linejoin="round"/>
+<polygon points="365,617 353.0,612.5 353.0,621.5" fill="#96551B"/>
+<rect x="613.5" y="686" width="452.99999999999994" height="22.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="840" y="704.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="#96551B">Previous-key feedback: round_keys[count][127:0]</text>
+<polyline points="495,488 495,525" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="495,525 499.5,515.0 490.5,515.0" fill="#636879"/>
+<rect x="448.5" y="471" width="93.0" height="20.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="495" y="487.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">count[3:0]</text>
+<polyline points="970,488 970,525" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="970,525 974.5,515.0 965.5,515.0" fill="#636879"/>
+<rect x="897.5" y="471" width="145.0" height="20.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="970" y="487.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">round_index[3:0]</text>
+<polyline points="1325,488 1325,525" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="1325,525 1329.5,515.0 1320.5,515.0" fill="#636879"/>
+<rect x="1252.5" y="471" width="145.0" height="20.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1325" y="487.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">round_index[3:0]</text>
+<polyline points="1535,488 1535,525" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="1535,525 1539.5,515.0 1530.5,515.0" fill="#636879"/>
+<rect x="1475.5" y="471" width="119.0" height="20.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1535" y="487.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">key_step / clk</text>
+<polyline points="1460,714 1460,650" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="1460,650 1455.5,660.0 1464.5,660.0" fill="#636879"/>
+<rect x="1413.5" y="723" width="93.0" height="20.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1460" y="739.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">count[3:0]</text>
+<text x="1100" y="743.0" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="end" fill="#96551B">Write: round_keys[round_index] &lt;= next_key</text>
+<rect x="340" y="848" width="285" height="92" rx="0" fill="#F1F6FA" stroke="#215D88" stroke-width="1.6"/>
+<text x="482.5" y="890.22" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" text-anchor="middle" fill="#215D88">Initial AddRoundKey</text>
+<text x="482.5" y="918.22" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">u_add_round_key | 128-bit XOR</text>
+<polyline points="245,568 245,880 340,880" fill="none" stroke="#96551B" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="340,880 328.0,875.5 328.0,884.5" fill="#96551B"/>
+<rect x="254" y="806" width="95.0" height="20.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="260" y="822.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#96551B">key[127:0]</text>
+<rect x="680" y="959" width="220" height="197" rx="0" fill="#F1F6FA" stroke="#215D88" stroke-width="1.6"/>
+<text x="790" y="986.0" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="700" text-anchor="middle" fill="#215D88">State Input MUX</text>
+<text x="693" y="1018.0" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#215D88">0   data_in</text>
+<text x="693" y="1060.0" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#215D88">1   Initial AddRoundKey</text>
+<text x="693" y="1100.0" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#215D88">2   AES Round result</text>
+<text x="693" y="1140.0" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="start" fill="#215D88">3   State hold/feedback</text>
+<rect x="1000" y="993" width="245" height="112" rx="0" fill="#F1F6FA" stroke="#215D88" stroke-width="1.6"/>
+<text x="1122.5" y="1035.04" font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#215D88">State Register</text>
+<text x="1122.5" y="1063.04" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">data_out[127:0]</text>
+<text x="1122.5" y="1084.6399999999999" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">128-bit | posedge clk</text>
+<polyline points="900,1050 1000,1050" fill="none" stroke="#215D88" stroke-width="3.5" stroke-linejoin="round"/>
+<polygon points="1000,1050 988.0,1045.5 988.0,1054.5" fill="#215D88"/>
+<rect x="905.5" y="1003" width="91.0" height="20.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="951" y="1019.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">data_next</text>
+<text x="952" y="1074.0" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="middle" fill="#215D88">128</text>
+<polyline points="90,1013 680,1013" fill="none" stroke="#215D88" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="680,1013 668.0,1008.5 668.0,1017.5" fill="#215D88"/>
+<rect x="113.0" y="979" width="148.0" height="23.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="187" y="998.0" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="400" text-anchor="middle" fill="#215D88">data_in[127:0]</text>
+<polyline points="625,894 650,894 650,1055 680,1055" fill="none" stroke="#215D88" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="680,1055 668.0,1050.5 668.0,1059.5" fill="#215D88"/>
+<rect x="284.0" y="953" width="242.0" height="20.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="405" y="969.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">add_round_key_result[127:0]</text>
+<polyline points="1125,993 1125,834 535,834 535,848" fill="none" stroke="#215D88" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="535,848 539.5,836.0 530.5,836.0" fill="#215D88"/>
+<rect x="712.0" y="836" width="318.0" height="20.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="871" y="852.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">State feedback to Initial AddRoundKey</text>
+<text x="1090" y="928.0" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="end" fill="#215D88">State Register Q</text>
+<rect x="1370" y="1000" width="235" height="104" rx="0" fill="#F1F6FA" stroke="#215D88" stroke-width="1.6"/>
+<text x="1487.5" y="1038.36" font-family="DejaVu Sans, sans-serif" font-size="23" font-weight="700" text-anchor="middle" fill="#215D88">AES Round</text>
+<text x="1487.5" y="1066.36" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">u_round : round</text>
+<text x="1487.5" y="1087.9599999999998" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">Combinational</text>
+<polyline points="1245,1050 1370,1050" fill="none" stroke="#215D88" stroke-width="3.5" stroke-linejoin="round"/>
+<polygon points="1370,1050 1358.0,1045.5 1358.0,1054.5" fill="#215D88"/>
+<circle cx="1300" cy="1050" r="4" fill="#215D88"/>
+<rect x="1287.0" y="1015" width="40.0" height="19.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1307" y="1030.0" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="middle" fill="#215D88">128</text>
+<polyline points="1300,1050 1300,946 1680,946" fill="none" stroke="#215D88" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="1680,946 1668.0,941.5 1668.0,950.5" fill="#215D88"/>
+<rect x="1379.0" y="911" width="162.0" height="23.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1460" y="930.0" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="400" text-anchor="middle" fill="#215D88">data_out[127:0]</text>
+<polyline points="1605,1052 1670,1052 1670,1225 620,1225 620,1095 680,1095" fill="none" stroke="#215D88" stroke-width="3.8" stroke-linejoin="round"/>
+<polygon points="680,1095 668.0,1090.5 668.0,1099.5" fill="#215D88"/>
+<rect x="860.5" y="1192" width="543.0" height="22.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1132" y="1210.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="#215D88">Round feedback: round_result[127:0] | reused for 10 rounds</text>
+<polyline points="1125,1105 1125,1178 650,1178 650,1135 680,1135" fill="none" stroke="#215D88" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="680,1135 670.0,1130.5 670.0,1139.5" fill="#215D88"/>
+<rect x="931.5" y="1144" width="177.0" height="20.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1020" y="1160.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">State hold / data_out</text>
+<polyline points="790,916 790,959" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="790,959 794.5,949.0 785.5,949.0" fill="#636879"/>
+<rect x="728.0" y="895" width="124.0" height="21.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="790" y="912.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#636879">data_sel[1:0]</text>
+<polyline points="1080,957 1080,993" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="1080,993 1084.5,983.0 1075.5,983.0" fill="#636879"/>
+<rect x="1045.0" y="938" width="70.0" height="20.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1080" y="954.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">clk / rst</text>
+<polyline points="1460,964 1460,1000" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="1460,1000 1464.5,990.0 1455.5,990.0" fill="#636879"/>
+<rect x="1408.0" y="954" width="88.0" height="20.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1452" y="970.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#636879">final_step</text>
+<polyline points="1580,650 1580,1000" fill="none" stroke="#96551B" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="1580,1000 1584.5,988.0 1575.5,988.0" fill="#96551B"/>
+<rect x="1525.5" y="825" width="109.0" height="21.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1580" y="842.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#96551B">round_keys</text>
+<rect x="1515.0" y="850" width="130.0" height="21.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1580" y="867.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#96551B">[round_index]</text>
+<rect x="1591.0" y="883" width="40.0" height="19.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1611" y="898.0" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="middle" fill="#96551B">128</text>
+<polyline points="70,1297 130,1297" fill="none" stroke="#215D88" stroke-width="3.5" stroke-linejoin="round"/>
+<polygon points="130,1297 118.0,1292.5 118.0,1301.5" fill="#215D88"/>
+<text x="141" y="1303.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#215D88">State / Data</text>
+<polyline points="322,1297 382,1297" fill="none" stroke="#96551B" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="382,1297 370.0,1292.5 370.0,1301.5" fill="#96551B"/>
+<text x="393" y="1303.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#96551B">Round Key</text>
+<polyline points="556,1297 616,1297" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="616,1297 606.0,1292.5 606.0,1301.5" fill="#636879"/>
+<text x="627" y="1303.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#636879">Control / address / clock</text>
+<text x="1748" y="1303.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="end" fill="#626B78">Matching control labels denote the same net.</text>
+<text x="70" y="1335.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#626B78">rst: synchronous, active high; resets Controller and State Register only. Round Key Registers have no reset.</text>
+<polyline points="45,1351 1755,1351" fill="none" stroke="#CCD2D9" stroke-width="1" stroke-linejoin="round"/>
+<text x="45" y="1376.0" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#626B78">Sources: rtl/core/aes128_iterative_core.v; rtl/core/controller.v</text>
+<text x="1755" y="1376.0" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="end" fill="#626B78">RTL-derived | Verilog-2005</text>
+</svg>

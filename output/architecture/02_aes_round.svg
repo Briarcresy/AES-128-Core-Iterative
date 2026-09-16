@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1350" viewBox="0 0 1500 1350">
+<rect x="0" y="0" width="1500" height="1350" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="45" y="49.0" font-family="DejaVu Sans, sans-serif" font-size="30" font-weight="700" text-anchor="start" fill="#202733">AES Round Architecture</text>
+<text x="45" y="79.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#626B78">round | one combinational datapath reused across all 10 encryption rounds</text>
+<text x="1455" y="48.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="end" fill="#626B78">FIG. 02</text>
+<polyline points="45,96 1455,96" fill="none" stroke="#CCD2D9" stroke-width="1" stroke-linejoin="round"/>
+<rect x="335" y="140" width="820" height="1055" rx="0" fill="white" stroke="#215D88" stroke-width="1.5"/>
+<text x="365" y="174.0" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" text-anchor="start" fill="#215D88">u_round : round</text>
+<text x="670" y="125.0" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#215D88">state_in[127:0]</text>
+<polyline points="670,134 670,210" fill="none" stroke="#215D88" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="670,210 674.5,198.0 665.5,198.0" fill="#215D88"/>
+<rect x="470" y="210" width="400" height="128" rx="0" fill="#F1F6FA" stroke="#215D88" stroke-width="1.6"/>
+<text x="670.0" y="250.5" font-family="DejaVu Sans, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#215D88">SubBytes</text>
+<text x="670.0" y="278.5" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">u_sub_bytes : sub_bytes</text>
+<text x="670.0" y="300.1" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">16 parallel S-box instances</text>
+<text x="670.0" y="321.7" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">Each: asynchronous 256 × 8-bit ROM</text>
+<polyline points="670,338 670,420" fill="none" stroke="#215D88" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="670,420 674.5,408.0 665.5,408.0" fill="#215D88"/>
+<rect x="592.0" y="365" width="156.0" height="22.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="670" y="383.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="#215D88">after_sub[127:0]</text>
+<rect x="470" y="420" width="400" height="111" rx="0" fill="#F1F6FA" stroke="#215D88" stroke-width="1.6"/>
+<text x="670.0" y="462.5" font-family="DejaVu Sans, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#215D88">ShiftRows</text>
+<text x="670.0" y="490.5" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">u_shift_rows : shift_rows</text>
+<text x="670.0" y="512.1" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">Fixed byte permutation | column-major</text>
+<polyline points="670,531 670,625" fill="none" stroke="#215D88" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="670,625 674.5,613.0 665.5,613.0" fill="#215D88"/>
+<rect x="588.5" y="553" width="163.0" height="22.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="670" y="571.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="#215D88">after_shift[127:0]</text>
+<circle cx="670" cy="593" r="4" fill="#215D88"/>
+<rect x="470" y="625" width="400" height="121" rx="0" fill="#F1F6FA" stroke="#215D88" stroke-width="1.6"/>
+<text x="670.0" y="662.0" font-family="DejaVu Sans, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#215D88">MixColumns</text>
+<text x="670.0" y="690.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">u_mix_columns : mix_columns</text>
+<text x="670.0" y="711.6" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">4 parallel 32-bit column transforms</text>
+<text x="670.0" y="733.2" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">Combinational GF(2^8) transform</text>
+<polyline points="670,746 670,852" fill="none" stroke="#215D88" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="670,852 674.5,840.0 665.5,840.0" fill="#215D88"/>
+<rect x="590.5" y="777" width="159.0" height="22.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="670" y="795.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="#215D88">after_mix[127:0]</text>
+<polyline points="670,593 1040,593 1040,898 870,898" fill="none" stroke="#215D88" stroke-width="3.5" stroke-linejoin="round"/>
+<polygon points="870,898 882.0,902.5 882.0,893.5" fill="#215D88"/>
+<rect x="932.5" y="543" width="191.0" height="23.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1028" y="562.0" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="400" text-anchor="middle" fill="#215D88">Final-round bypass</text>
+<rect x="991.0" y="741" width="98.0" height="21.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1040" y="758.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#215D88">after_shift</text>
+<text x="1080" y="786.0" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="middle" fill="#215D88">128</text>
+<rect x="470" y="852" width="400" height="111" rx="0" fill="#F1F6FA" stroke="#215D88" stroke-width="1.6"/>
+<text x="670" y="885.0" font-family="DejaVu Sans, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#215D88">Final-Round MUX</text>
+<text x="670" y="917.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="#215D88">0: after_mix    |    1: after_shift</text>
+<text x="670" y="943.0" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="middle" fill="#215D88">before_key = final_round ? after_shift : after_mix</text>
+<text x="63" y="885.0" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#636879">final_round</text>
+<text x="63" y="914.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start" fill="#636879">from top-level final_step</text>
+<polyline points="63,930 307,930 307,908 470,908" fill="none" stroke="#636879" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<polygon points="470,908 460.0,903.5 460.0,912.5" fill="#636879"/>
+<polyline points="670,963 670,1054" fill="none" stroke="#215D88" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="670,1054 674.5,1042.0 665.5,1042.0" fill="#215D88"/>
+<rect x="584.0" y="993" width="172.0" height="22.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="670" y="1011.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="#215D88">before_key[127:0]</text>
+<rect x="470" y="1054" width="400" height="100" rx="0" fill="#F1F6FA" stroke="#215D88" stroke-width="1.6"/>
+<text x="670.0" y="1091.0" font-family="DejaVu Sans, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#215D88">AddRoundKey</text>
+<text x="670.0" y="1119.0" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">u_add_round_key : add_round_key</text>
+<text x="670.0" y="1140.6" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="middle" fill="#215D88">128-bit XOR</text>
+<polyline points="1310,1098 870,1098" fill="none" stroke="#96551B" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="870,1098 882.0,1102.5 882.0,1093.5" fill="#96551B"/>
+<rect x="1155.0" y="1053" width="190.0" height="24.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="1250" y="1073.0" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#96551B">round_key[127:0]</text>
+<polyline points="670,1154 670,1220" fill="none" stroke="#215D88" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="670,1220 674.5,1208.0 665.5,1208.0" fill="#215D88"/>
+<rect x="578.5" y="1226" width="183.0" height="25.0" rx="0" fill="white" stroke="none" stroke-width="1.6"/>
+<text x="670" y="1247.0" font-family="DejaVu Sans, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#215D88">state_out[127:0]</text>
+<text x="1215" y="325.0" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="700" text-anchor="start" fill="#202733">Round selection</text>
+<text x="1215" y="359.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#202733">Rounds 1-9:</text>
+<text x="1215" y="386.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#636879">final_round = 0</text>
+<text x="1215" y="425.0" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#202733">Round 10:</text>
+<text x="1215" y="452.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#636879">final_round = 1</text>
+<text x="45" y="1281.0" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start" fill="#626B78">No internal state registers or pipeline stages. MixColumns is bypassed by selection; no clock gating is present.</text>
+<polyline points="45,1301 1455,1301" fill="none" stroke="#CCD2D9" stroke-width="1" stroke-linejoin="round"/>
+<text x="45" y="1326.0" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="start" fill="#626B78">Sources: rtl/core/round.v; sub_bytes.v; shift_rows.v; mix_columns.v; add_round_key.v; sbox_byte.v</text>
+<text x="1455" y="1326.0" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="end" fill="#626B78">RTL-derived | Verilog-2005</text>
+</svg>
