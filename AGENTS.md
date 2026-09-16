@@ -1,0 +1,45 @@
+# 项目协作指南
+
+## 对话
+
+在跟用户对话时主语言为中文，重要的专业术语请使用英文括号中文的形式。
+
+## 项目范围
+
+- 本仓库实现一个迭代式、仅支持加密的 AES-128 核。
+- RTL 应保持清晰易读，便于初学者理解。
+- 优先优化面积，性能和功耗为次要目标。
+
+## RTL 规范
+
+- 在 `rtl/core/` 中编写可综合的 Verilog-2005 代码。
+- 只有顶层模块 `aes128_iterative_core` 保留 `aes128_` 前缀。
+- 保持 AES 状态矩阵的列优先布局，并维持仅加密设计。
+- 优先采用简洁、模块化的结构，避免不必要的功能和抽象。
+- Verilog编码允许使用行为级建模，但请尽量使用易于看出综合后的电路结构的写法。
+- 不要在 `rtl/` 目录中添加 README 文件。
+
+## 验证
+
+在项目根目录运行 AES 测试：
+
+```sh
+iverilog -g2005 -I. -s tb_aes128_iterative -o /tmp/aes.vvp tests/tb_aes128_iterative.v rtl/core/*.v
+vvp /tmp/aes.vvp
+```
+
+运行 S-box 测试：
+
+```sh
+iverilog -g2005 -I. -s tb_sbox_byte -o /tmp/sbox.vvp tests/tb_sbox_byte.v rtl/core/sbox_byte.v
+vvp /tmp/sbox.vvp
+```
+
+- 保证现有测试持续通过；行为发生变化时，应添加针对性的测试。
+- 只有在功能测试通过后，PPA 结果才可视为有效。
+
+## 修改规范
+
+- 保留工作区中与当前任务无关的用户修改。
+- 修改应保持聚焦；如果接口或延迟发生变化，需要明确说明。
+- 除非用户明确要求，否则不要提交或推送 Git 变更。
