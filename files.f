@@ -1,10 +1,6 @@
-rtl/core/sbox_byte.v
-rtl/core/sub_bytes.v
-rtl/core/shift_rows.v
-rtl/core/mix_columns.v
-rtl/core/add_round_key.v
-rtl/core/key_expansion.v
-rtl/core/round.v
+ip/ics55_ecos_rom_256x8_m8_b1/verilog/ics55_ecos_rom_256x8_m8_b1_stub.v
+rtl/core/sbox_rom_adapter.v
+rtl/core/mix_column.v
 rtl/core/controller.v
 rtl/core/aes128_iterative_core.v
 rtl/Aes128Iterative.v

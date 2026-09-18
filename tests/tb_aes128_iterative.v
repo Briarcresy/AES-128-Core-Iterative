@@ -33,11 +33,11 @@ module tb_aes128_iterative;
                 $stop;
             end
             cycles = 0;
-            while (!done && cycles < 25) begin
+            while (!done && cycles < 500) begin
                 @(negedge clk);
                 cycles = cycles + 1;
             end
-            if (!done || cycles != 20) begin
+            if (!done || cycles != 456) begin
                 $display("FAIL: wrong latency: %0d cycles", cycles);
                 $stop;
             end

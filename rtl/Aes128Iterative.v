@@ -1,4 +1,6 @@
 // 32-bit shared-IO wrapper for the iterative AES-128 encryption core.
+// The FPGA drives clock for both its test controller and this ASIC.
+// FPGA inputs change on falling edges; this wrapper samples on rising edges.
 module Aes128Iterative #(
     parameter IO_WIDTH = 66
 ) (

@@ -35,12 +35,13 @@ iverilog -g2005 -I. -s tb_aes128_iterative -o /tmp/aes.vvp tests/tb_aes128_itera
 vvp /tmp/aes.vvp
 ```
 
-运行 S-box 测试：
+运行同步ROM S-box测试：
 
 ```sh
-iverilog -g2005 -I. -s tb_sbox_byte -o /tmp/sbox.vvp tests/tb_sbox_byte.v rtl/core/sbox_byte.v
-vvp /tmp/sbox.vvp
+make test-rom
 ```
+
+运行全部RTL测试：`make test`。
 
 - 保证现有测试持续通过；行为发生变化时，应添加针对性的测试。
 - 只有在功能测试通过后，PPA 结果才可视为有效。

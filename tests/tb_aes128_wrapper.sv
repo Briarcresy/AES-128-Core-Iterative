@@ -36,12 +36,15 @@ module tb_aes128_wrapper;
         input [1:0] index;
         output [31:0] value;
         begin
+            @(negedge clock);
             io_in[33:32] = index;
             io_in[37] = 1'b1;
+            @(posedge clock);
             #1;
             value = io_out[31:0];
             if (io_oe[31:0] !== 32'hffff_ffff)
                 $fatal(1, "data bus output-enable is incorrect");
+            @(negedge clock);
             io_in[37] = 1'b0;
         end
     endtask
