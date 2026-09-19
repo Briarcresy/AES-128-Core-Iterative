@@ -7,7 +7,12 @@ module mix_column (
     wire [7:0] a2, b2, c2, d2;
     wire [7:0] a3, b3, c3, d3;
 
-    `include "rtl/core/includes/xtime.vh"
+    function [7:0] xtime;
+        input [7:0] x;
+        begin
+            xtime = {x[6:0], 1'b0} ^ (8'h1b & {8{x[7]}});
+        end
+    endfunction
 
     assign a = column_in[31:24];
     assign b = column_in[23:16];

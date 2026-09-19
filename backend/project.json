@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "project_id": "proj_aes_128_core_iterative",
+  "name": "AES-128-Core-Iterative",
+  "design_name": "aes128-iterative",
+  "description": "",
+  "root_path": "/home/briarcresy/AES-128-Core-Iterative/backend",
+  "created_at": "2026-09-19T12:35:29.675Z",
+  "updated_at": "2026-09-19T12:35:29.675Z",
+  "base_design": {
+    "parameters": {
+      "design": "aes128-iterative"
+    },
+    "rtl_list": []
+  },
+  "objectives": {
+    "primary": "timing",
+    "directions": {
+      "wns": "maximize",
+      "tns": "maximize",
+      "area": "minimize",
+      "drc_count": "minimize",
+      "lvs_count": "minimize",
+      "power": "minimize"
+    }
+  },
+  "workspaces": [],
+  "mpc": {
+    "resource_id": "mpc:mpc-frame",
+    "display_name": "MPC Frame",
+    "installed_version": "0.1.0",
+    "path": "/home/briarcresy/.local/share/ecos-studio/mpcs/mpc-frame/0.1.0",
+    "spec_path": "/home/briarcresy/.local/share/ecos-studio/mpcs/mpc-frame/0.1.0/spec/spec.json.in",
+    "design": {
+      "index": 0,
+      "design_name": "mpc-frame-template",
+      "directory": "./designs/template"
+    },
+    "core_template": {
+      "name": "@MODULE@",
+      "info": "Generic MPC user-design macro template. Generated packages replace @MODULE@ with the selected top-module name while preserving the fixed frame interface.",
+      "source": "rtl/UserDesign.sv.in",
+      "module": "@MODULE@",
+      "maximum_core_num": 50,
+      "minimum_area": 100,
+      "maximum_area": 1000000,
+      "maximum_cell_num": 100000,
+      "parameters": [
+        {
+          "name": "IO_WIDTH",
+          "type": "int",
+          "default": 66,
+          "info": "Width of each io_in, io_out, and io_oe vector."
+        }
+      ],
+      "ports": [
+        {
+          "name": "clock",
+          "direction": "input",
+          "data_type": "logic",
+          "width": 1,
+          "info": "Clock input from FrameTop."
+        },
+        {
+          "name": "reset",
+          "direction": "input",
+          "data_type": "logic",
+          "width": 1,
+          "info": "Reset input from FrameTop."
+        },
+        {
+          "name": "io_in",
+          "direction": "input",
+          "data_type": "logic",
+          "width": 66,
+          "info": "Resolved values of the 66 payload pads."
+        },
+        {
+          "name": "io_out",
+          "direction": "output",
+          "data_type": "logic",
+          "width": 66,
+          "info": "Values driven to payload pads when the matching io_oe bit is asserted."
+        },
+        {
+          "name": "io_oe",
+          "direction": "output",
+          "data_type": "logic",
+          "width": 66,
+          "info": "Output-enable vector; a one drives the matching io_out bit and a zero releases the pad."
+        }
+      ],
+      "frame_io": {
+        "top_module": "FrameTop",
+        "design_id_width": 7,
+        "payload_width": 66,
+        "payload_pads": "user_io[72:7]",
+        "mapping": "io_*[n] maps to user_io[n + 7]."
+      },
+      "template_behavior": {
+        "replaceable": true,
+        "reset": "The example implementation uses a synchronous active-high reset.",
+        "example_logic": "The example toggles io_out[0] on each clock through a heartbeat register and routes io_in[2] to io_out[1].",
+        "example_output_enable": "The example asserts io_oe[1:0] and releases all remaining payload pads."
+      }
+    }
+  },
+  "best_workspace": null,
+  "qor_baseline": null
+}
