@@ -36,18 +36,24 @@ key / plaintext
 
 设计中只有一个ROM实例。旧架构的20个并行S-box和10组预存轮密钥均已移除。
 
+完整的控制状态跳转见 [控制流程图](control_flow.svg)。图中的菱形表示转移条件，不是额外的时钟状态。
+
 ## 模块
 
 | 模块 | 作用 |
 |---|---|
 | `Aes128Iterative` | 32-bit共享IO wrapper |
-| `aes128_iterative_core` | AES数据寄存器、地址选择和轮运算 |
+| `aes128_iterative_core` | 连接控制器、密钥通路、状态通路和共享ROM；选择ROM地址 |
 | `controller` | 多周期控制状态机和计数器 |
+| `key_schedule` | 保存当前轮密钥，收集4次S-box输出并生成下一轮密钥 |
+| `state_path` | 保存AES状态，完成SubBytes/ShiftRows、MixColumns和AddRoundKey |
 | `sbox_rom_adapter` | 仿真ROM与ICS55硬宏的统一接口 |
-| `mix_column` | 一次处理一列的32-bit MixColumns逻辑 |
+| `mix_column` | `state_path` 内部复用的32-bit单列MixColumns逻辑 |
 | `ics55_ecos_rom_256x8_m8_b1` | 256×8同步S-box硬宏 |
 
 厂商IP保存在 `ip/ics55_ecos_rom_256x8_m8_b1/`，不放入 `rtl/core/`。
+`key_schedule` 和 `state_path` 共用一块ROM：两者分别给出地址，顶层根据控制器状态选择其中一路。
+此次拆分只改变模块边界，不改变控制状态、寄存器更新时机或加密周期数。
 
 ## 每轮执行过程
 

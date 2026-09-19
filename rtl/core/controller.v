@@ -1,16 +1,22 @@
 // Controls the byte-serial S-box ROM and the iterative AES rounds.
 module controller (
-    input wire clk, input wire rst, input wire start,
-    output wire load_input, output wire key_request,
-    output wire key_capture, output wire key_update,
-    output wire state_request, output wire state_capture,
-    output wire mix_step, output wire add_key_step,
-    output wire final_round,
+    input wire clk,
+    input wire rst,
+    input wire start,
+    output wire load_input,
+    output wire key_request,
+    output wire key_capture,
+    output wire key_update,
+    output wire state_request,
+    output wire state_capture,
+    output wire mix_step,
+    output wire add_key_step,
     output reg [1:0] key_byte_index,
     output reg [4:0] state_byte_index,
     output reg [1:0] column_index,
     output reg [3:0] round_index,
-    output wire busy, output reg done
+    output wire busy,
+    output reg done
 );
     localparam [3:0] IDLE = 4'd0, KEY_REQUEST = 4'd1,
         KEY_CAPTURE = 4'd2, KEY_UPDATE = 4'd3,
@@ -26,7 +32,6 @@ module controller (
     assign state_capture = (phase == STATE_CAPTURE);
     assign mix_step = (phase == MIX_COLUMN);
     assign add_key_step = (phase == ADD_KEY);
-    assign final_round = (round_index == 4'd10);
     assign busy = (phase != IDLE);
 
     always @(posedge clk) begin
@@ -40,7 +45,8 @@ module controller (
         end else begin
             done <= 1'b0;
             case (phase)
-                IDLE: if (start) begin
+                IDLE:
+                if (start) begin
                     key_byte_index <= 2'd0;
                     round_index <= 4'd1;
                     phase <= KEY_REQUEST;
@@ -64,7 +70,7 @@ module controller (
                     if (state_byte_index == 5'd15) begin
                         state_byte_index <= 5'd0;
                         column_index <= 2'd0;
-                        if (final_round) phase <= ADD_KEY;
+                        if (round_index == 4'd10) phase <= ADD_KEY;
                         else phase <= MIX_COLUMN;
                     end else begin
                         state_byte_index <= state_byte_index + 5'd1;
@@ -78,8 +84,8 @@ module controller (
                     end else column_index <= column_index + 2'd1;
                 end
                 ADD_KEY: begin
-                    if (final_round) begin
-                        done <= 1'b1;
+                    if (round_index == 4'd10) begin
+                        done  <= 1'b1;
                         phase <= IDLE;
                     end else begin
                         round_index <= round_index + 4'd1;

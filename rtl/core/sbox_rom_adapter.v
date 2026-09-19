@@ -3,7 +3,7 @@ module sbox_rom_adapter (
     input  wire       clk,
     input  wire       enable,
     input  wire [7:0] address,
-    output wire [7:0] data
+    output reg  [7:0] data
 );
 `ifdef SYNTHESIS
     ics55_ecos_rom_256x8_m8_b1 u_rom (
@@ -16,12 +16,10 @@ module sbox_rom_adapter (
     );
 `else
     reg [7:0] rom[0:255];
-    reg [7:0] data_reg;
     initial
         $readmemb("ip/ics55_ecos_rom_256x8_m8_b1/verilog/ics55_ecos_rom_256x8_m8_b1.romcode", rom);
     always @(posedge clk) begin
-        if (enable) data_reg <= rom[address];
+        if (enable) data <= rom[address];
     end
-    assign data = data_reg;
 `endif
 endmodule
