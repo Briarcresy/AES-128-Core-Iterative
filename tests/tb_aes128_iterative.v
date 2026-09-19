@@ -13,8 +13,8 @@ module tb_aes128_iterative;
         .rst(rst),
         .start(start),
         .key(key),
-        .data_in(data_in),
-        .data_out(data_out),
+        .plaintext(data_in),
+        .ciphertext(data_out),
         .busy(busy),
         .done(done)
     );

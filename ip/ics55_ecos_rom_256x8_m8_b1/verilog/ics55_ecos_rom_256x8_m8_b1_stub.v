@@ -15,6 +15,9 @@ module ics55_ecos_rom_256x8_m8_b1 (
     CEB
   );
 
+  // Match the codefile parameter of the vendor simulation model.
+  parameter codefile = "verilog/ics55_ecos_rom_256x8_m8_b1.romcode";
+
 
   input [7:0] A;
   input CEB;
@@ -33,6 +36,5 @@ module ics55_ecos_rom_256x8_m8_b1 (
 
 endmodule
 `endcelldefine
-
 
 

@@ -13,7 +13,6 @@ module Aes128Iterative #(
 
     reg  [127:0] key_reg;
     reg  [127:0] plaintext_reg;
-    reg  [127:0] ciphertext_reg;
     reg  [ 31:0] ciphertext_word;
     reg          done_reg;
 
@@ -29,7 +28,7 @@ module Aes128Iterative #(
     wire         word_select_1;
     wire         word_select_2;
     wire         word_select_3;
-    wire [127:0] core_data_out;
+    wire [127:0] ciphertext;
     wire         core_busy;
     wire         core_done;
 
@@ -49,14 +48,14 @@ module Aes128Iterative #(
     assign word_select_3   = word_index[1] & word_index[0];
 
     aes128_iterative_core u_core (
-        .clk     (clock),
-        .rst     (reset),
-        .start   (start),
-        .key     (key_reg),
-        .data_in (plaintext_reg),
-        .data_out(core_data_out),
-        .busy    (core_busy),
-        .done    (core_done)
+        .clk       (clock),
+        .rst       (reset),
+        .start     (start),
+        .key       (key_reg),
+        .plaintext (plaintext_reg),
+        .ciphertext(ciphertext),
+        .busy      (core_busy),
+        .done      (core_done)
     );
 
     always @(posedge clock) begin
@@ -100,21 +99,16 @@ module Aes128Iterative #(
     end
 
     always @(posedge clock) begin
-        if (reset) ciphertext_reg <= 128'd0;
-        else if (core_done) ciphertext_reg <= core_data_out;
-    end
-
-    always @(posedge clock) begin
         if (reset) done_reg <= 1'b0;
         else done_reg <= core_done;
     end
 
     always @* begin
         case (word_index)
-            2'd0: ciphertext_word = ciphertext_reg[127:96];
-            2'd1: ciphertext_word = ciphertext_reg[95:64];
-            2'd2: ciphertext_word = ciphertext_reg[63:32];
-            default: ciphertext_word = ciphertext_reg[31:0];
+            2'd0: ciphertext_word = ciphertext[127:96];
+            2'd1: ciphertext_word = ciphertext[95:64];
+            2'd2: ciphertext_word = ciphertext[63:32];
+            default: ciphertext_word = ciphertext[31:0];
         endcase
     end
 

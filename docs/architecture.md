@@ -47,13 +47,17 @@ key / plaintext
 | `controller` | 多周期控制状态机和计数器 |
 | `key_schedule` | 保存当前轮密钥，收集4次S-box输出并生成下一轮密钥 |
 | `state_path` | 保存AES状态，完成SubBytes/ShiftRows、MixColumns和AddRoundKey |
-| `sbox_rom_adapter` | 仿真ROM与ICS55硬宏的统一接口 |
+| `shift_rows` | 16条固定字节连线，显式表示ShiftRows的行移位，不含寄存器 |
+| `add_round_key` | 128位逐位异或；用于初始加轮密钥和每轮末尾 |
+| `sbox_rom` | 直接例化ICS55 ROM IP，连接地址、时钟和低有效片选 |
 | `mix_column` | `state_path` 内部复用的32-bit单列MixColumns逻辑 |
 | `ics55_ecos_rom_256x8_m8_b1` | 256×8同步S-box硬宏 |
 
 厂商IP保存在 `ip/ics55_ecos_rom_256x8_m8_b1/`，不放入 `rtl/core/`。
 `key_schedule` 和 `state_path` 共用一块ROM：两者分别给出地址，顶层根据控制器状态选择其中一路。
-此次拆分只改变模块边界，不改变控制状态、寄存器更新时机或加密周期数。
+寄存器输入按“保持、装载输入、装载轮结果”组织为MUX，选择信号由 `controller` 输出；
+`key_schedule` 和 `state_path` 只根据这些信号选数据，不实现状态机。
+此次拆分和RTL改写不改变控制状态、寄存器更新时机或加密周期数。
 
 ## 每轮执行过程
 
@@ -84,8 +88,8 @@ AES状态按列优先（column-major）保存，最左侧字节为 `[127:120]`�
 byte_index = 4 * column + row
 ```
 
-状态S-box查询按照ShiftRows后的目标位置遍历。ROM地址从对应源位置选择，ROM输出直接写入
-`state_temp_reg` 的目标位置，因此不再需要单独的128-bit ShiftRows网络。
+`shift_rows` 将 `state_reg` 的16个字节按固定连线排列。状态S-box查询按其输出位置遍历，
+ROM输出直接写入 `state_temp_reg` 的对应位置。这个模块只是连线，不增加寄存器或时钟周期。
 
 ## 密钥扩展
 
@@ -94,8 +98,8 @@ byte_index = 4 * column + row
 
 ## ROM模型
 
-- RTL仿真：`sbox_rom_adapter` 读取 `.romcode` 并模拟同步ROM。
-- 综合：定义 `SYNTHESIS`，适配器例化厂商硬宏，使用 `*_stub.v` 声明接口。
+- RTL仿真：`sbox_rom` 直接例化ROM IP，编译厂商提供的 `*_core.v` 功能模型读取 `.romcode`。
+- 综合：同一个 `sbox_rom` 实例使用厂商 `*_stub.v` 声明硬宏接口。
 - STA：同时读取标准单元Liberty和ROM Liberty。
 
 ROM内容由 `scripts/generate_romcode.py` 从 `mem/sbox.mem` 生成。

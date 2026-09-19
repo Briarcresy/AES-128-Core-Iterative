@@ -85,6 +85,16 @@ module tb_aes128_wrapper;
         if (io_oe[39:38] !== 2'b11 || io_oe[65:40] !== '0)
             $fatal(1, "wrapper output-enable mapping is incorrect");
 
+        // A new start changes the core state; the read port follows it directly.
+        @(negedge clock);
+        io_in[33:32] = 2'd0;
+        io_in[37] = 1'b1;
+        io_in[36] = 1'b1;
+        @(posedge clock);
+        #1;
+        if (io_out[31:0] !== 32'h00102030)
+            $fatal(1, "read port must follow core state without a ciphertext register");
+
         $display("AES-128 wrapper test: PASS");
         $finish;
     end

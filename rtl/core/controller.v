@@ -3,14 +3,13 @@ module controller (
     input wire clk,
     input wire rst,
     input wire start,
-    output wire load_input,
     output wire key_request,
     output wire key_capture,
-    output wire key_update,
     output wire state_request,
     output wire state_capture,
     output wire mix_step,
-    output wire add_key_step,
+    output wire [1:0] key_reg_sel,
+    output wire [1:0] state_reg_sel,
     output reg [1:0] key_byte_index,
     output reg [4:0] state_byte_index,
     output reg [1:0] column_index,
@@ -24,14 +23,14 @@ module controller (
         MIX_COLUMN = 4'd6, ADD_KEY = 4'd7;
     reg [3:0] phase;
 
-    assign load_input = (phase == IDLE) && start;
     assign key_request = (phase == KEY_REQUEST);
     assign key_capture = (phase == KEY_CAPTURE);
-    assign key_update = (phase == KEY_UPDATE);
     assign state_request = (phase == STATE_REQUEST);
     assign state_capture = (phase == STATE_CAPTURE);
     assign mix_step = (phase == MIX_COLUMN);
-    assign add_key_step = (phase == ADD_KEY);
+    // 0 = hold, 1 = load input, 2 = load round result.
+    assign key_reg_sel = ((phase == IDLE) && start) ? 2'd1 : (phase == KEY_UPDATE) ? 2'd2 : 2'd0;
+    assign state_reg_sel = ((phase == IDLE) && start) ? 2'd1 : (phase == ADD_KEY) ? 2'd2 : 2'd0;
     assign busy = (phase != IDLE);
 
     always @(posedge clk) begin

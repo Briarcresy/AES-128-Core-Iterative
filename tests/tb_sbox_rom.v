@@ -8,7 +8,7 @@ module tb_sbox_rom;
 
     always #5 clk = ~clk;
 
-    sbox_rom_adapter dut (
+    sbox_rom dut (
         .clk(clk), .enable(enable), .address(address), .data(data)
     );
 
