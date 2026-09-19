@@ -4,3 +4,4 @@ sim/vectors/
 link.txt
 /yosys-sta/
 /sta-results/
+/backend/
