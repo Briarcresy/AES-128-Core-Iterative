@@ -1,0 +1,72 @@
+{
+  "pages": [
+    {
+      "page": "01_top_level",
+      "vertices": 54,
+      "edges": 22,
+      "attached_signal_edges": 17
+    },
+    {
+      "page": "02_core",
+      "vertices": 73,
+      "edges": 23,
+      "attached_signal_edges": 15
+    },
+    {
+      "page": "03_state_path",
+      "vertices": 69,
+      "edges": 29,
+      "attached_signal_edges": 20
+    },
+    {
+      "page": "04_key_schedule",
+      "vertices": 65,
+      "edges": 47,
+      "attached_signal_edges": 32
+    },
+    {
+      "page": "05 mix_column",
+      "vertices": 100,
+      "edges": 108,
+      "attached_signal_edges": 73
+    },
+    {
+      "page": "06 xtime",
+      "vertices": 47,
+      "edges": 21,
+      "attached_signal_edges": 16
+    }
+  ],
+  "no_embedded_images": true,
+  "export_hashes_match": true,
+  "rtl_modified": false,
+  "pdf_png_exporter": "draw.io Desktop 31.3.2",
+  "editor_check": {
+    "before": {
+      "x": 591.53515625,
+      "y": 398.4296875,
+      "width": 52.4296875,
+      "height": 32.390625
+    },
+    "after": {
+      "x": 628.28515625,
+      "y": 417.1796875,
+      "width": 52.4296875,
+      "height": 32.390625
+    },
+    "undone": {
+      "x": 591.53515625,
+      "y": 398.4296875,
+      "width": 52.4296875,
+      "height": 32.390625
+    },
+    "changedPaths": 10,
+    "text_edit_and_undo_verified": true,
+    "six_pages_opened": true
+  },
+  "visual_review": {
+    "drawio_exported_png_pages": 6,
+    "drawio_pdf_rendered_pages": 6,
+    "reviewed": true
+  }
+}

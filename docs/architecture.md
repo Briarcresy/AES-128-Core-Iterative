@@ -53,7 +53,7 @@ key / plaintext
 | `mix_column` | `state_path` 内部复用的32-bit单列MixColumns逻辑 |
 | `ics55_ecos_rom_256x8_m8_b1` | 256×8同步S-box硬宏 |
 
-厂商IP保存在 `ip/ics55_ecos_rom_256x8_m8_b1/`，不放入 `rtl/core/`。
+厂商 ROM 硬宏保存在 `pdk/IP/ROM/ics55_ecos_rom_256x8_m8_b1/`，不放入 `rtl/core/`。
 `key_schedule` 和 `state_path` 共用一块ROM：两者分别给出地址，顶层根据控制器状态选择其中一路。
 寄存器输入按“保持、装载输入、装载轮结果”组织为MUX，选择信号由 `controller` 输出；
 `key_schedule` 和 `state_path` 只根据这些信号选数据，不实现状态机。

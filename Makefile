@@ -6,9 +6,9 @@ RESULT_DIR := $(ROOT)/sta-results
 CLK_FREQ_MHZ ?= 20
 PPA_RESULT_DIR := $(RESULT_DIR)/$(DESIGN)-$(CLK_FREQ_MHZ)MHz
 SBOX_MEM := $(ROOT)/mem/sbox.mem
-ROM_CODE := $(ROOT)/ip/ics55_ecos_rom_256x8_m8_b1/verilog/ics55_ecos_rom_256x8_m8_b1.romcode
-ROM_LIB := $(ROOT)/ip/ics55_ecos_rom_256x8_m8_b1/lib/ics55_ecos_rom_256x8_m8_b1_tt1p2v25cctyp.lib
-ROM_SIM_MODEL := ip/ics55_ecos_rom_256x8_m8_b1/verilog/ics55_ecos_rom_256x8_m8_b1_core.v
+ROM_CODE := $(ROOT)/pdk/IP/ROM/ics55_ecos_rom_256x8_m8_b1/verilog/ics55_ecos_rom_256x8_m8_b1.romcode
+ROM_LIB := $(ROOT)/pdk/IP/ROM/ics55_ecos_rom_256x8_m8_b1/lib/ics55_ecos_rom_256x8_m8_b1_tt1p2v25cctyp.lib
+ROM_SIM_MODEL := pdk/IP/ROM/ics55_ecos_rom_256x8_m8_b1/verilog/ics55_ecos_rom_256x8_m8_b1_core.v
 PPA_TOOL_LOG := $(PPA_RESULT_DIR)/ppa-tool.log
 
 RTL_FILES := $(addprefix $(ROOT)/,$(shell cat $(ROOT)/files.f))

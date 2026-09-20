@@ -1,4 +1,4 @@
-ip/ics55_ecos_rom_256x8_m8_b1/verilog/ics55_ecos_rom_256x8_m8_b1_stub.v
+pdk/IP/ROM/ics55_ecos_rom_256x8_m8_b1/verilog/ics55_ecos_rom_256x8_m8_b1_stub.v
 rtl/core/sbox_rom.v
 rtl/core/mix_column.v
 rtl/core/add_round_key.v

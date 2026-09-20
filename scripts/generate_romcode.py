@@ -5,7 +5,7 @@ from pathlib import Path
 
 root = Path(__file__).resolve().parent.parent
 source = root / "mem" / "sbox.mem"
-target = root / "ip" / "ics55_ecos_rom_256x8_m8_b1" / "verilog" / "ics55_ecos_rom_256x8_m8_b1.romcode"
+target = root / "pdk" / "IP" / "ROM" / "ics55_ecos_rom_256x8_m8_b1" / "verilog" / "ics55_ecos_rom_256x8_m8_b1.romcode"
 
 values = [int(line, 16) for line in source.read_text().splitlines() if line.strip()]
 if len(values) != 256:

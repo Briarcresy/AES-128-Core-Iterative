@@ -8,7 +8,7 @@ module sbox_rom (
     ics55_ecos_rom_256x8_m8_b1
 `ifndef SYNTHESIS
     #(
-        .codefile("ip/ics55_ecos_rom_256x8_m8_b1/verilog/ics55_ecos_rom_256x8_m8_b1.romcode")
+        .codefile("pdk/IP/ROM/ics55_ecos_rom_256x8_m8_b1/verilog/ics55_ecos_rom_256x8_m8_b1.romcode")
     )
 `endif
     u_rom (

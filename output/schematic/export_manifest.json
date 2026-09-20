@@ -1,0 +1,259 @@
+{
+  "exporter": "official draw.io desktop CLI",
+  "started_at_utc": "2026-09-20T14:19:52.605514+00:00",
+  "source": "aes128_schematic.drawio",
+  "source_sha256": "fc81cf5ce1924964bd23d1c8b38ced7defeecc22fc04cfcba6a7662b26a0339e",
+  "application": "/snap/drawio/current/app/drawio",
+  "page_count": 6,
+  "png_scale": 3.125,
+  "border": 20,
+  "commands": [
+    {
+      "argv": [
+        "xvfb-run",
+        "-a",
+        "/snap/drawio/current/app/drawio",
+        "--no-sandbox",
+        "--disable-gpu",
+        "--disable-update",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "31.3.2",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "xvfb-run",
+        "-a",
+        "/snap/drawio/current/app/drawio",
+        "--no-sandbox",
+        "--disable-gpu",
+        "--disable-update",
+        "--export",
+        "--theme",
+        "light",
+        "--border",
+        "20",
+        "--format",
+        "pdf",
+        "--all-pages",
+        "--crop",
+        "--output",
+        "/home/briarcresy/AES-128-Core-Iterative/output/schematic/aes128_schematic.pdf",
+        "/home/briarcresy/AES-128-Core-Iterative/output/schematic/aes128_schematic.drawio"
+      ],
+      "returncode": 0,
+      "stdout": "/home/briarcresy/AES-128-Core-Iterative/output/schematic/aes128_schematic.drawio -> /home/briarcresy/AES-128-Core-Iterative/output/schematic/aes128_schematic.pdf",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "xvfb-run",
+        "-a",
+        "/snap/drawio/current/app/drawio",
+        "--no-sandbox",
+        "--disable-gpu",
+        "--disable-update",
+        "--export",
+        "--theme",
+        "light",
+        "--border",
+        "20",
+        "--format",
+        "png",
+        "--page-index",
+        "1",
+        "--scale",
+        "3.125",
+        "--output",
+        "/home/briarcresy/AES-128-Core-Iterative/output/schematic/01_top_level.png",
+        "/home/briarcresy/AES-128-Core-Iterative/output/schematic/aes128_schematic.drawio"
+      ],
+      "returncode": 0,
+      "stdout": "/home/briarcresy/AES-128-Core-Iterative/output/schematic/aes128_schematic.drawio -> /home/briarcresy/AES-128-Core-Iterative/output/schematic/01_top_level.png",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "xvfb-run",
+        "-a",
+        "/snap/drawio/current/app/drawio",
+        "--no-sandbox",
+        "--disable-gpu",
+        "--disable-update",
+        "--export",
+        "--theme",
+        "light",
+        "--border",
+        "20",
+        "--format",
+        "png",
+        "--page-index",
+        "2",
+        "--scale",
+        "3.125",
+        "--output",
+        "/home/briarcresy/AES-128-Core-Iterative/output/schematic/02_core.png",
+        "/home/briarcresy/AES-128-Core-Iterative/output/schematic/aes128_schematic.drawio"
+      ],
+      "returncode": 0,
+      "stdout": "/home/briarcresy/AES-128-Core-Iterative/output/schematic/aes128_schematic.drawio -> /home/briarcresy/AES-128-Core-Iterative/output/schematic/02_core.png",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "xvfb-run",
+        "-a",
+        "/snap/drawio/current/app/drawio",
+        "--no-sandbox",
+        "--disable-gpu",
+        "--disable-update",
+        "--export",
+        "--theme",
+        "light",
+        "--border",
+        "20",
+        "--format",
+        "png",
+        "--page-index",
+        "3",
+        "--scale",
+        "3.125",
+        "--output",
+        "/home/briarcresy/AES-128-Core-Iterative/output/schematic/03_state_path.png",
+        "/home/briarcresy/AES-128-Core-Iterative/output/schematic/aes128_schematic.drawio"
+      ],
+      "returncode": 0,
+      "stdout": "/home/briarcresy/AES-128-Core-Iterative/output/schematic/aes128_schematic.drawio -> /home/briarcresy/AES-128-Core-Iterative/output/schematic/03_state_path.png",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "xvfb-run",
+        "-a",
+        "/snap/drawio/current/app/drawio",
+        "--no-sandbox",
+        "--disable-gpu",
+        "--disable-update",
+        "--export",
+        "--theme",
+        "light",
+        "--border",
+        "20",
+        "--format",
+        "png",
+        "--page-index",
+        "4",
+        "--scale",
+        "3.125",
+        "--output",
+        "/home/briarcresy/AES-128-Core-Iterative/output/schematic/04_key_schedule.png",
+        "/home/briarcresy/AES-128-Core-Iterative/output/schematic/aes128_schematic.drawio"
+      ],
+      "returncode": 0,
+      "stdout": "/home/briarcresy/AES-128-Core-Iterative/output/schematic/aes128_schematic.drawio -> /home/briarcresy/AES-128-Core-Iterative/output/schematic/04_key_schedule.png",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "xvfb-run",
+        "-a",
+        "/snap/drawio/current/app/drawio",
+        "--no-sandbox",
+        "--disable-gpu",
+        "--disable-update",
+        "--export",
+        "--theme",
+        "light",
+        "--border",
+        "20",
+        "--format",
+        "png",
+        "--page-index",
+        "5",
+        "--scale",
+        "3.125",
+        "--output",
+        "/home/briarcresy/AES-128-Core-Iterative/output/schematic/05_mix_column.png",
+        "/home/briarcresy/AES-128-Core-Iterative/output/schematic/aes128_schematic.drawio"
+      ],
+      "returncode": 0,
+      "stdout": "/home/briarcresy/AES-128-Core-Iterative/output/schematic/aes128_schematic.drawio -> /home/briarcresy/AES-128-Core-Iterative/output/schematic/05_mix_column.png",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "xvfb-run",
+        "-a",
+        "/snap/drawio/current/app/drawio",
+        "--no-sandbox",
+        "--disable-gpu",
+        "--disable-update",
+        "--export",
+        "--theme",
+        "light",
+        "--border",
+        "20",
+        "--format",
+        "png",
+        "--page-index",
+        "6",
+        "--scale",
+        "3.125",
+        "--output",
+        "/home/briarcresy/AES-128-Core-Iterative/output/schematic/06_xtime.png",
+        "/home/briarcresy/AES-128-Core-Iterative/output/schematic/aes128_schematic.drawio"
+      ],
+      "returncode": 0,
+      "stdout": "/home/briarcresy/AES-128-Core-Iterative/output/schematic/aes128_schematic.drawio -> /home/briarcresy/AES-128-Core-Iterative/output/schematic/06_xtime.png",
+      "stderr": ""
+    }
+  ],
+  "outputs": [
+    {
+      "file": "aes128_schematic.pdf",
+      "bytes": 294424,
+      "sha256": "5a1eefeaacd4b218d51975d4d77a4980e52442d19e2bc4be7f02c10efd59f215"
+    },
+    {
+      "file": "01_top_level.png",
+      "bytes": 848842,
+      "sha256": "9ff28dc6afad4183a61797b90d1b5ee4bb2800d02c2e0bfb7ad91792bca19d5c",
+      "page_name": "01_top_level"
+    },
+    {
+      "file": "02_core.png",
+      "bytes": 840345,
+      "sha256": "d92c85626cc9961d8b7dfa12d882b0221dbfbf6febe3d2dcfc88cf422106bfe0",
+      "page_name": "02_core"
+    },
+    {
+      "file": "03_state_path.png",
+      "bytes": 897106,
+      "sha256": "bdb771b6d6b54b47b99314a222f05db2f294c314431210c2d644fcfc447357e5",
+      "page_name": "03_state_path"
+    },
+    {
+      "file": "04_key_schedule.png",
+      "bytes": 864605,
+      "sha256": "b491caf1fc4f3baa6f53038603e54b2915970858966efd5c076aaf3d8accc9ba",
+      "page_name": "04_key_schedule"
+    },
+    {
+      "file": "05_mix_column.png",
+      "bytes": 963040,
+      "sha256": "b6c7b80d9b36c9dd1861536798337282335b6bda14bd3e5e8cc1378c6c701027",
+      "page_name": "05 mix_column"
+    },
+    {
+      "file": "06_xtime.png",
+      "bytes": 699855,
+      "sha256": "8416b68791fccadeb54aa3ea10c630851e0ea38be8ab1d1394eaf40bf5f6cbb4",
+      "page_name": "06 xtime"
+    }
+  ],
+  "complete": true,
+  "application_version": "31.3.2",
+  "completed_at_utc": "2026-09-20T14:20:18.079239+00:00"
+}
