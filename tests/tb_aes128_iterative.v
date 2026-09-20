@@ -13,8 +13,8 @@ module tb_aes128_iterative;
         .rst(rst),
         .start(start),
         .key(key),
-        .data_in(data_in),
-        .data_out(data_out),
+        .plaintext(data_in),
+        .ciphertext(data_out),
         .busy(busy),
         .done(done)
     );
@@ -32,12 +32,16 @@ module tb_aes128_iterative;
                 $display("FAIL: busy not asserted");
                 $stop;
             end
+            if (data_out !== dut.state_reg) begin
+                $display("FAIL: data_out must follow state_reg");
+                $stop;
+            end
             cycles = 0;
-            while (!done && cycles < 25) begin
+            while (!done && cycles < 500) begin
                 @(negedge clk);
                 cycles = cycles + 1;
             end
-            if (!done || cycles != 20) begin
+            if (!done || cycles != 456) begin
                 $display("FAIL: wrong latency: %0d cycles", cycles);
                 $stop;
             end

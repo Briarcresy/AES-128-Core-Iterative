@@ -1,3 +1,4 @@
+// AES AddRoundKey is 128 parallel XOR gates.
 module add_round_key (
     input  wire [127:0] state_in,
     input  wire [127:0] round_key,

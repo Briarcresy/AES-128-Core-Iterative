@@ -122,6 +122,12 @@ def decrypt(ciphertext, key):
     return add_round_key(state, round_keys[0])
 
 
+# Clear public names used by the project tests.
+expand_key = key_expansion
+encrypt_block = encrypt
+decrypt_block = decrypt
+
+
 if __name__ == "__main__":
     key = bytes.fromhex("000102030405060708090a0b0c0d0e0f")
     plaintext = bytes.fromhex("00112233445566778899aabbccddeeff")

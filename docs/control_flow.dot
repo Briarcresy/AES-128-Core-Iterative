@@ -1,0 +1,65 @@
+// AES-128 controller flow. Regenerate SVG with:
+// dot -Tsvg docs/control_flow.dot -o docs/control_flow.svg
+digraph aes_control_flow {
+    graph [
+        label="AES-128 单 ROM 控制流程",
+        labelloc=t,
+        fontsize=24,
+        fontname="Noto Sans CJK SC",
+        ranksep=0.48,
+        nodesep=0.38,
+        splines=polyline,
+        pad=0.3
+    ];
+    node [
+        shape=box,
+        style="rounded,filled",
+        fillcolor="#f3f7fc",
+        color="#486581",
+        penwidth=1.4,
+        fontname="Noto Sans CJK SC",
+        fontsize=13,
+        margin="0.19,0.11"
+    ];
+    edge [
+        color="#486581",
+        arrowsize=0.8,
+        fontname="Noto Sans CJK SC",
+        fontsize=11
+    ];
+
+    reset [shape=oval, fillcolor="#e8edf3", label="复位 rst=1"];
+    idle [fillcolor="#e8edf3", label="IDLE\n等待 start；busy=0"];
+    key_request [label="KEY_REQUEST\n送出密钥字节地址，ROM 读取"];
+    key_capture [label="KEY_CAPTURE\n保存 ROM 输出到 key_temp_reg"];
+    key_count [shape=diamond, style=filled, fillcolor="#fff5df", label="第 4 个密钥字节？"];
+    key_update [label="KEY_UPDATE\n计算并保存下一轮密钥"];
+    state_request [label="STATE_REQUEST\n送出状态字节地址，ROM 读取"];
+    state_capture [label="STATE_CAPTURE\n保存 ROM 输出；同时完成 ShiftRows"];
+    state_count [shape=diamond, style=filled, fillcolor="#fff5df", label="第 16 个状态字节？"];
+    final_round [shape=diamond, style=filled, fillcolor="#fff5df", label="round_index = 10？"];
+    mix_column [label="MIX_COLUMN\n处理当前 32-bit 列"];
+    column_count [shape=diamond, style=filled, fillcolor="#fff5df", label="第 4 列？"];
+    add_key [label="ADD_KEY\nstate_reg ← state_temp_reg XOR key_reg"];
+    round_count [shape=diamond, style=filled, fillcolor="#fff5df", label="round_index = 10？"];
+
+    reset -> idle;
+    idle -> key_request [label="start=1；装载明文和密钥，\n初始 AddRoundKey；round_index ← 1"];
+    key_request -> key_capture;
+    key_capture -> key_count;
+    key_count -> key_request [label="否；字节号 +1", color="#467cc0", fontcolor="#467cc0", constraint=false];
+    key_count -> key_update [label="是"];
+    key_update -> state_request;
+    state_request -> state_capture;
+    state_capture -> state_count;
+    state_count -> state_request [label="否；字节号 +1", color="#467cc0", fontcolor="#467cc0", constraint=false];
+    state_count -> final_round [label="是"];
+    final_round -> mix_column [label="否"];
+    final_round -> add_key [label="是；跳过 MixColumns", color="#a05a20", fontcolor="#a05a20"];
+    mix_column -> column_count;
+    column_count -> mix_column [label="否；列号 +1", color="#467cc0", fontcolor="#467cc0", constraint=false];
+    column_count -> add_key [label="是"];
+    add_key -> round_count;
+    round_count -> key_request [label="否；轮号 +1", color="#467cc0", fontcolor="#467cc0", constraint=false];
+    round_count -> idle [label="是；done=1 一个周期", color="#27805b", fontcolor="#27805b", constraint=false];
+}

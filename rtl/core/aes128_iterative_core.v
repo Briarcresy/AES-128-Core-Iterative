@@ -1,74 +1,83 @@
-// AES-128 encryption-only top level. Ten key-expansion clocks and ten round clocks.
+// Connects the controller, key schedule, state path, and one shared S-box ROM.
 module aes128_iterative_core (
-    input  wire         clk,
-    input  wire         rst,
-    input  wire         start,
-    input  wire [127:0] key,
-    input  wire [127:0] data_in,
-    output reg  [127:0] data_out,
-    output wire         busy,
-    output wire         done
+    input wire clk,
+    input wire rst,
+    input wire start,
+    input wire [127:0] key,
+    input wire [127:0] plaintext,
+    output wire [127:0] ciphertext,
+    output wire busy,
+    output wire done
 );
-    wire [3:0] round_index, count;
-    wire [  1:0] data_sel;
-    reg  [127:0] round_keys[1:10];
-    wire [127:0] old_key, next_key, round_result, add_round_key_result;
-    reg [127:0] data_next;
-    wire key_step, final_step;
+    wire key_request, key_capture;
+    wire state_request, state_capture, mix_step;
+    wire [1:0] key_byte_index, column_index;
+    wire [4:0] state_byte_index;
+    wire [3:0] round_index;
+    wire [1:0] key_reg_sel, state_reg_sel;
+    wire [127:0] round_key;
+    wire [127:0] state_reg;
+    wire [7:0] key_rom_address, state_rom_address, rom_data;
+    wire [7:0] rom_address;
+    wire rom_enable;
 
-    assign old_key = (count == 4'd0) ? key : round_keys[count];
-
-    assign round_index = count + 1;
+    assign ciphertext  = state_reg;
+    assign rom_enable  = key_request | state_request;
+    // Two 8-bit input MUXes select which datapath addresses the shared ROM.
+    assign rom_address = key_request ? key_rom_address : state_request ? state_rom_address : 8'd0;
 
     controller u_controller (
         .clk(clk),
         .rst(rst),
         .start(start),
-        .count(count),
-        .key_step(key_step),
-        .final_step(final_step),
-        .data_sel(data_sel),
+        .key_request(key_request),
+        .key_capture(key_capture),
+        .state_request(state_request),
+        .state_capture(state_capture),
+        .mix_step(mix_step),
+        .key_reg_sel(key_reg_sel),
+        .state_reg_sel(state_reg_sel),
+        .key_byte_index(key_byte_index),
+        .state_byte_index(state_byte_index),
+        .column_index(column_index),
+        .round_index(round_index),
         .busy(busy),
         .done(done)
     );
 
-    key_expansion u_key_expansion (
-        .old_key(old_key),
+    key_schedule u_key_schedule (
+        .clk(clk),
+        .rst(rst),
+        .key_reg_sel(key_reg_sel),
+        .key_in(key),
+        .key_capture(key_capture),
+        .key_byte_index(key_byte_index),
         .round_index(round_index),
-        .new_key(next_key)
+        .rom_data(rom_data),
+        .rom_address(key_rom_address),
+        .round_key(round_key)
     );
 
-    round u_round (
-        .state_in(data_out),
-        .round_key(round_keys[round_index]),
-        .final_round(final_step),
-        .state_out(round_result)
+    state_path u_state_path (
+        .clk(clk),
+        .rst(rst),
+        .state_reg_sel(state_reg_sel),
+        .plaintext(plaintext),
+        .initial_key(key),
+        .round_key(round_key),
+        .state_capture(state_capture),
+        .mix_step(mix_step),
+        .state_byte_index(state_byte_index),
+        .column_index(column_index),
+        .rom_data(rom_data),
+        .rom_address(state_rom_address),
+        .state_reg(state_reg)
     );
 
-    add_round_key u_add_round_key (
-        .state_in (data_out),
-        .round_key(key),
-        .state_out(add_round_key_result)
+    sbox_rom u_sbox_rom (
+        .clk(clk),
+        .enable(rom_enable),
+        .address(rom_address),
+        .data(rom_data)
     );
-
-    always @(posedge clk) begin
-        if (key_step) begin
-            round_keys[round_index] <= next_key;
-        end
-    end
-
-    always @(posedge clk) begin
-        if (rst) data_out <= 128'd0;
-        else data_out <= data_next;
-    end
-
-    always @* begin
-        case (data_sel)
-            2'd0: data_next = data_in;
-            2'd1: data_next = add_round_key_result;
-            2'd2: data_next = round_result;
-            default: data_next = data_out;
-        endcase
-    end
-
 endmodule

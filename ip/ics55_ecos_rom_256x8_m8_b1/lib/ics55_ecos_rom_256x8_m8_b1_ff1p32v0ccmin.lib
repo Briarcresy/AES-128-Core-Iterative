@@ -1,0 +1,573 @@
+library(ics55_ecos_rom_256x8_m8_b1_ff1p32v0ccmin) {
+
+
+    delay_model             : table_lookup ;
+    time_unit               : "1ns" ;
+    voltage_unit            : "1V" ;
+    current_unit            : "1mA" ;
+    leakage_power_unit      : "1pW" ;
+    pulling_resistance_unit : "1kohm" ;
+    capacitive_load_unit(1.0,pf) ;
+                 
+    
+    slew_derate_from_library      : 1.00 ;
+    slew_lower_threshold_pct_rise : 30.0 ;
+    slew_upper_threshold_pct_rise : 70.0 ;
+    slew_lower_threshold_pct_fall : 30.0 ;
+    slew_upper_threshold_pct_fall : 70.0 ;
+      
+
+    default_inout_pin_cap         : 0.005 ;
+    default_input_pin_cap         : 0.005 ;
+    default_output_pin_cap        : 0.0 ;
+    default_max_fanout            : 999.0 ;
+    default_max_transition        : 0.4 ;
+    default_fanout_load           : 1.0 ;
+    default_cell_leakage_power    : 0.0 ;
+    default_leakage_power_density : 0.0 ;
+
+    input_threshold_pct_fall      : 50.00 ;
+    output_threshold_pct_fall     : 50.00 ;
+    input_threshold_pct_rise      : 50.00 ;
+    output_threshold_pct_rise     : 50.00 ;
+
+    library_features(report_delay_calculation);
+
+    nom_process       : 1.0 ;
+    nom_temperature   : 0 ;
+    nom_voltage       : 1.32 ;
+    operating_conditions(ff1p32v0ccmin) {
+      process : 1.0000 ;
+      temperature : 0 ;
+      voltage : 1.32 ;
+      tree_type : "balanced_tree" ; 
+    }
+    default_operating_conditions : ff1p32v0ccmin ;
+
+          
+
+    voltage_map(VDD, 1.32);
+    voltage_map(VSS, 0.0);    
+
+
+
+lu_table_template(ics55_ecos_rom_256x8_m8_b1_0) {
+   variable_1 : input_net_transition;
+   variable_2 : total_output_net_capacitance;
+   index_1("0.008, 0.05, 0.1, 0.2, 0.4");
+   index_2("0.005, 0.02, 0.05, 0.1, 0.3");
+}
+lu_table_template(ics55_ecos_rom_256x8_m8_b1_1) {
+   variable_1 : constrained_pin_transition;
+   variable_2 : related_pin_transition;
+   index_1("0.008, 0.05, 0.1, 0.2, 0.4");
+   index_2("0.008, 0.05, 0.1, 0.2, 0.4");
+}
+lu_table_template(ics55_ecos_rom_256x8_m8_b1_2) {
+   variable_1 : constrained_pin_transition;
+   index_1("0.008, 0.05, 0.1, 0.2, 0.4");
+}
+power_lut_template(POWER){
+  variable_1 : input_transition_time;
+   index_1("0.008, 0.05, 0.1, 0.2, 0.4");
+}
+
+type (  ADDR_7_0  ) {
+        base_type : array;
+        data_type : bit;
+        bit_width : 8;
+        bit_from  : 7;
+        bit_to    : 0;
+        downto    : true;
+}
+type (  Data_7_0  ) {
+        base_type : array;
+        data_type : bit;
+        bit_width : 8;
+        bit_from  : 7;
+        bit_to    : 0;
+        downto    : true;
+}
+type (  MAR_3_0  ) {
+        base_type : array;
+        data_type : bit;
+        bit_width : 4;
+        bit_from  : 3;
+        bit_to    : 0;
+        downto    : true;
+}
+
+
+
+
+
+cell(ics55_ecos_rom_256x8_m8_b1) {
+
+  pg_pin(VDD) {
+    voltage_name : VDD; 
+    pg_type : primary_power;         
+  }
+  pg_pin(VSS) {
+    voltage_name : VSS; 
+    pg_type : primary_ground;         
+  }  
+
+  dont_touch : true ;
+  dont_use : true ;
+  interface_timing : true;
+  is_memory_cell : true;
+  is_macro_cell : true;
+  area : 1761.372; /* Area unit is um^2 */
+
+
+  leakage_power() {
+     related_pg_pin : VDD;
+     when : "CEB";
+     value : 1255155.0;
+  }
+  leakage_power() {
+     related_pg_pin : VDD;
+     when : "!CEB";
+     value : 1440304.8;
+  }
+  memory() {
+    type : rom;
+    address_width : 8 ;
+    word_width : 8 ;
+  }   
+  
+
+  bus(Q) {
+    bus_type : Data_7_0;
+    direction : output ;
+    max_capacitance : 0.3;
+    memory_read() {
+      address : A;
+    }
+    pin(Q[7:0]) {    
+      power_down_function : "!VDD + VSS";
+      related_power_pin : VDD;
+      related_ground_pin : VSS;
+    
+      timing() {
+        related_pin : "CLK";
+        when : "!CEB & !MARE";
+        sdf_cond : "!CEB && !MARE";
+        timing_type : "rising_edge";
+        timing_sense : "non_unate";
+        cell_rise(ics55_ecos_rom_256x8_m8_b1_0) {
+        values("0.3627,0.3739,0.3930,0.4243,0.5491",\
+               "0.3758,0.3870,0.4061,0.4373,0.5622",\
+               "0.3827,0.3939,0.4130,0.4443,0.5691",\
+               "0.3896,0.4008,0.4199,0.4511,0.5760",\
+               "0.3943,0.4055,0.4246,0.4559,0.5807");
+        }
+        rise_transition(ics55_ecos_rom_256x8_m8_b1_0) {
+        values("0.0084,0.0159,0.0325,0.0615,0.1785",\
+               "0.0084,0.0159,0.0325,0.0615,0.1785",\
+               "0.0084,0.0159,0.0325,0.0615,0.1785",\
+               "0.0084,0.0159,0.0325,0.0615,0.1785",\
+               "0.0084,0.0159,0.0325,0.0615,0.1785");
+        }
+        cell_fall(ics55_ecos_rom_256x8_m8_b1_0) {
+        values("0.5007,0.5112,0.5291,0.5582,0.6745",\
+               "0.5138,0.5243,0.5422,0.5713,0.6876",\
+               "0.5207,0.5312,0.5491,0.5782,0.6945",\
+               "0.5276,0.5381,0.5560,0.5851,0.7014",\
+               "0.5323,0.5428,0.5607,0.5898,0.7061");
+        }
+        fall_transition(ics55_ecos_rom_256x8_m8_b1_0) {
+        values("0.0074,0.0144,0.0293,0.0554,0.1608",\
+               "0.0074,0.0144,0.0293,0.0554,0.1608",\
+               "0.0074,0.0144,0.0293,0.0554,0.1608",\
+               "0.0074,0.0144,0.0293,0.0554,0.1608",\
+               "0.0074,0.0144,0.0293,0.0554,0.1608");
+        }
+        retaining_rise(ics55_ecos_rom_256x8_m8_b1_0) {
+        values("0.3318,0.3430,0.3621,0.3934,0.5183",\
+               "0.3449,0.3561,0.3752,0.4065,0.5313",\
+               "0.3518,0.3630,0.3821,0.4134,0.5383",\
+               "0.3587,0.3699,0.3890,0.4203,0.5451",\
+               "0.3634,0.3746,0.3937,0.4250,0.5499");
+        }
+        retain_rise_slew(ics55_ecos_rom_256x8_m8_b1_0) {
+        values("0.0084,0.0159,0.0325,0.0615,0.1785",\
+               "0.0084,0.0159,0.0325,0.0615,0.1785",\
+               "0.0084,0.0159,0.0325,0.0615,0.1785",\
+               "0.0084,0.0159,0.0325,0.0615,0.1785",\
+               "0.0084,0.0159,0.0325,0.0615,0.1785");
+        }
+        retaining_fall(ics55_ecos_rom_256x8_m8_b1_0) {
+        values("0.3295,0.3400,0.3579,0.3870,0.5033",\
+               "0.3426,0.3531,0.3710,0.4001,0.5164",\
+               "0.3495,0.3600,0.3779,0.4070,0.5233",\
+               "0.3564,0.3669,0.3848,0.4139,0.5301",\
+               "0.3611,0.3716,0.3895,0.4186,0.5349");
+        }
+        retain_fall_slew(ics55_ecos_rom_256x8_m8_b1_0) {
+        values("0.0074,0.0144,0.0293,0.0554,0.1608",\
+               "0.0074,0.0144,0.0293,0.0554,0.1608",\
+               "0.0074,0.0144,0.0293,0.0554,0.1608",\
+               "0.0074,0.0144,0.0293,0.0554,0.1608",\
+               "0.0074,0.0144,0.0293,0.0554,0.1608");
+        }
+      }
+      timing() {
+        related_pin : "CLK";
+        when : "!CEB & MARE & !MAR[3] & MAR[2] & MAR[1] & MAR[0]";
+        sdf_cond : "!CEB && MARE && !MAR[3] && MAR[2] && MAR[1] && MAR[0]";
+        timing_type : "rising_edge";
+        timing_sense : "non_unate";
+        cell_rise(ics55_ecos_rom_256x8_m8_b1_0) {
+        values("0.3627,0.3739,0.3930,0.4243,0.5491",\
+               "0.3758,0.3870,0.4061,0.4373,0.5622",\
+               "0.3827,0.3939,0.4130,0.4443,0.5691",\
+               "0.3896,0.4008,0.4199,0.4511,0.5760",\
+               "0.3943,0.4055,0.4246,0.4559,0.5807");
+        }
+        rise_transition(ics55_ecos_rom_256x8_m8_b1_0) {
+        values("0.0084,0.0159,0.0325,0.0615,0.1785",\
+               "0.0084,0.0159,0.0325,0.0615,0.1785",\
+               "0.0084,0.0159,0.0325,0.0615,0.1785",\
+               "0.0084,0.0159,0.0325,0.0615,0.1785",\
+               "0.0084,0.0159,0.0325,0.0615,0.1785");
+        }
+        cell_fall(ics55_ecos_rom_256x8_m8_b1_0) {
+        values("0.5007,0.5112,0.5291,0.5582,0.6745",\
+               "0.5138,0.5243,0.5422,0.5713,0.6876",\
+               "0.5207,0.5312,0.5491,0.5782,0.6945",\
+               "0.5276,0.5381,0.5560,0.5851,0.7014",\
+               "0.5323,0.5428,0.5607,0.5898,0.7061");
+        }
+        fall_transition(ics55_ecos_rom_256x8_m8_b1_0) {
+        values("0.0074,0.0144,0.0293,0.0554,0.1608",\
+               "0.0074,0.0144,0.0293,0.0554,0.1608",\
+               "0.0074,0.0144,0.0293,0.0554,0.1608",\
+               "0.0074,0.0144,0.0293,0.0554,0.1608",\
+               "0.0074,0.0144,0.0293,0.0554,0.1608");
+        }
+        retaining_rise(ics55_ecos_rom_256x8_m8_b1_0) {
+        values("0.3318,0.3430,0.3621,0.3934,0.5183",\
+               "0.3449,0.3561,0.3752,0.4065,0.5313",\
+               "0.3518,0.3630,0.3821,0.4134,0.5383",\
+               "0.3587,0.3699,0.3890,0.4203,0.5451",\
+               "0.3634,0.3746,0.3937,0.4250,0.5499");
+        }
+        retain_rise_slew(ics55_ecos_rom_256x8_m8_b1_0) {
+        values("0.0084,0.0159,0.0325,0.0615,0.1785",\
+               "0.0084,0.0159,0.0325,0.0615,0.1785",\
+               "0.0084,0.0159,0.0325,0.0615,0.1785",\
+               "0.0084,0.0159,0.0325,0.0615,0.1785",\
+               "0.0084,0.0159,0.0325,0.0615,0.1785");
+        }
+        retaining_fall(ics55_ecos_rom_256x8_m8_b1_0) {
+        values("0.3295,0.3400,0.3579,0.3870,0.5033",\
+               "0.3426,0.3531,0.3710,0.4001,0.5164",\
+               "0.3495,0.3600,0.3779,0.4070,0.5233",\
+               "0.3564,0.3669,0.3848,0.4139,0.5301",\
+               "0.3611,0.3716,0.3895,0.4186,0.5349");
+        }
+        retain_fall_slew(ics55_ecos_rom_256x8_m8_b1_0) {
+        values("0.0074,0.0144,0.0293,0.0554,0.1608",\
+               "0.0074,0.0144,0.0293,0.0554,0.1608",\
+               "0.0074,0.0144,0.0293,0.0554,0.1608",\
+               "0.0074,0.0144,0.0293,0.0554,0.1608",\
+               "0.0074,0.0144,0.0293,0.0554,0.1608");
+        }
+      }
+
+
+  }
+  }
+
+  bus(A) {
+    bus_type : ADDR_7_0;
+    direction : input ;   
+    capacitance : 0.0046;
+    max_transition : 0.4;
+    pin(A[7:0]) {  
+      related_power_pin : VDD;
+      related_ground_pin : VSS;
+      timing() {
+        related_pin : "CLK";
+        when : "!CEB";
+        sdf_cond : "sdfcond_A";
+        sdf_edges : both_edges;
+        timing_type : setup_rising;
+        rise_constraint(ics55_ecos_rom_256x8_m8_b1_1) {
+        values("0.2127,0.1996,0.1927,0.1858,0.1811",\
+               "0.2709,0.2578,0.2509,0.2440,0.2393",\
+               "0.3337,0.3206,0.3137,0.3068,0.3021",\
+               "0.4529,0.4399,0.4329,0.4261,0.4213",\
+               "0.6818,0.6687,0.6618,0.6549,0.6502");
+        }
+        fall_constraint(ics55_ecos_rom_256x8_m8_b1_1) {
+        values("0.2127,0.1996,0.1927,0.1858,0.1811",\
+               "0.2709,0.2578,0.2509,0.2440,0.2393",\
+               "0.3337,0.3206,0.3137,0.3068,0.3021",\
+               "0.4529,0.4399,0.4329,0.4261,0.4213",\
+               "0.6818,0.6687,0.6618,0.6549,0.6502");
+        }
+      }
+      timing() {
+        related_pin : "CLK";
+        when : "!CEB";
+        sdf_cond : "sdfcond_A";
+        sdf_edges : both_edges;
+        timing_type : hold_rising;
+        rise_constraint(ics55_ecos_rom_256x8_m8_b1_1) {
+        values("0.0989,0.1119,0.1188,0.1257,0.1319",\
+               "0.0988,0.1119,0.1188,0.1257,0.1319",\
+               "0.1035,0.1166,0.1235,0.1303,0.1365",\
+               "0.1161,0.1292,0.1361,0.1430,0.1491",\
+               "0.1452,0.1582,0.1652,0.1720,0.1782");
+        }
+        fall_constraint(ics55_ecos_rom_256x8_m8_b1_1) {
+        values("0.0989,0.1119,0.1188,0.1257,0.1319",\
+               "0.0988,0.1119,0.1188,0.1257,0.1319",\
+               "0.1035,0.1166,0.1235,0.1303,0.1365",\
+               "0.1161,0.1292,0.1361,0.1430,0.1491",\
+               "0.1452,0.1582,0.1652,0.1720,0.1782");
+        }
+      }
+    }
+  }
+
+  pin(CEB) {
+    related_power_pin : VDD;
+    related_ground_pin : VSS;
+    direction : input ;   
+    capacitance : 0.0090;
+    max_transition : 0.4;
+      timing() {
+        related_pin : "CLK";
+        sdf_edges : both_edges;
+        timing_type : setup_rising;
+        rise_constraint(ics55_ecos_rom_256x8_m8_b1_1) {
+        values("0.2812,0.2681,0.2612,0.2543,0.2496",\
+               "0.2924,0.2793,0.2724,0.2655,0.2608",\
+               "0.3003,0.2872,0.2803,0.2734,0.2687",\
+               "0.3128,0.2997,0.2928,0.2860,0.2812",\
+               "0.3326,0.3195,0.3126,0.3057,0.3010");
+        }
+        fall_constraint(ics55_ecos_rom_256x8_m8_b1_1) {
+        values("0.2812,0.2681,0.2612,0.2543,0.2496",\
+               "0.2924,0.2793,0.2724,0.2655,0.2608",\
+               "0.3003,0.2872,0.2803,0.2734,0.2687",\
+               "0.3128,0.2997,0.2928,0.2860,0.2812",\
+               "0.3326,0.3195,0.3126,0.3057,0.3010");
+        }
+      }
+      timing() {
+        related_pin : "CLK";
+        sdf_edges : both_edges;
+        timing_type : hold_rising;
+        rise_constraint(ics55_ecos_rom_256x8_m8_b1_1) {
+        values("0.0914,0.1045,0.1114,0.1200,0.1290",\
+               "0.0933,0.1071,0.1153,0.1245,0.1334",\
+               "0.1007,0.1145,0.1227,0.1319,0.1408",\
+               "0.1170,0.1308,0.1390,0.1482,0.1571",\
+               "0.1511,0.1650,0.1731,0.1823,0.1913");
+        }
+        fall_constraint(ics55_ecos_rom_256x8_m8_b1_1) {
+        values("0.0914,0.1045,0.1114,0.1200,0.1290",\
+               "0.0933,0.1071,0.1153,0.1245,0.1334",\
+               "0.1007,0.1145,0.1227,0.1319,0.1408",\
+               "0.1170,0.1308,0.1390,0.1482,0.1571",\
+               "0.1511,0.1650,0.1731,0.1823,0.1913");
+        }
+      }
+  }
+
+
+
+  bus(MAR) {
+    bus_type : MAR_3_0;
+    direction : input ;    
+    capacitance : 0.0024;
+    max_transition : 0.4;
+    pin(MAR[3:0]) { 
+      related_power_pin : VDD;
+      related_ground_pin : VSS;
+      timing() {
+        related_pin : "CLK";
+        when : "!CEB";
+        sdf_cond : "sdfcond_MAR";
+        sdf_edges : both_edges;
+        timing_type : setup_rising;
+        rise_constraint(ics55_ecos_rom_256x8_m8_b1_1) {
+        values("0.2812,0.2681,0.2612,0.2543,0.2496",\
+               "0.2924,0.2793,0.2724,0.2655,0.2608",\
+               "0.3003,0.2872,0.2803,0.2734,0.2687",\
+               "0.3128,0.2997,0.2928,0.2860,0.2812",\
+               "0.3326,0.3195,0.3126,0.3057,0.3010");
+        }
+        fall_constraint(ics55_ecos_rom_256x8_m8_b1_1) {
+        values("0.2812,0.2681,0.2612,0.2543,0.2496",\
+               "0.2924,0.2793,0.2724,0.2655,0.2608",\
+               "0.3003,0.2872,0.2803,0.2734,0.2687",\
+               "0.3128,0.2997,0.2928,0.2860,0.2812",\
+               "0.3326,0.3195,0.3126,0.3057,0.3010");
+        }
+      }
+      timing() {
+        related_pin : "CLK";
+        when : "!CEB";
+        sdf_cond : "sdfcond_MAR";
+        sdf_edges : both_edges;
+        timing_type : hold_rising;
+        rise_constraint(ics55_ecos_rom_256x8_m8_b1_1) {
+        values("0.0914,0.1045,0.1114,0.1200,0.1290",\
+               "0.0933,0.1071,0.1153,0.1245,0.1334",\
+               "0.1007,0.1145,0.1227,0.1319,0.1408",\
+               "0.1170,0.1308,0.1390,0.1482,0.1571",\
+               "0.1511,0.1650,0.1731,0.1823,0.1913");
+        }
+        fall_constraint(ics55_ecos_rom_256x8_m8_b1_1) {
+        values("0.0914,0.1045,0.1114,0.1200,0.1290",\
+               "0.0933,0.1071,0.1153,0.1245,0.1334",\
+               "0.1007,0.1145,0.1227,0.1319,0.1408",\
+               "0.1170,0.1308,0.1390,0.1482,0.1571",\
+               "0.1511,0.1650,0.1731,0.1823,0.1913");
+        }
+      }
+    }
+  }
+
+  pin(MARE) {
+    related_power_pin : VDD;
+    related_ground_pin : VSS;
+    direction : input ;   
+    capacitance : 0.0019; 
+    max_transition : 0.4;  
+      timing() {
+        related_pin : "CLK";
+        when : "!CEB";
+        sdf_cond : "sdfcond_MARE";
+        sdf_edges : both_edges;
+        timing_type : setup_rising;
+        rise_constraint(ics55_ecos_rom_256x8_m8_b1_1) {
+        values("0.2812,0.2681,0.2612,0.2543,0.2496",\
+               "0.2924,0.2793,0.2724,0.2655,0.2608",\
+               "0.3003,0.2872,0.2803,0.2734,0.2687",\
+               "0.3128,0.2997,0.2928,0.2860,0.2812",\
+               "0.3326,0.3195,0.3126,0.3057,0.3010");
+        }
+        fall_constraint(ics55_ecos_rom_256x8_m8_b1_1) {
+        values("0.2812,0.2681,0.2612,0.2543,0.2496",\
+               "0.2924,0.2793,0.2724,0.2655,0.2608",\
+               "0.3003,0.2872,0.2803,0.2734,0.2687",\
+               "0.3128,0.2997,0.2928,0.2860,0.2812",\
+               "0.3326,0.3195,0.3126,0.3057,0.3010");
+        }
+      }
+      timing() {
+        related_pin : "CLK";
+        when : "!CEB";
+        sdf_cond : "sdfcond_MARE";
+        sdf_edges : both_edges;
+        timing_type : hold_rising;
+        rise_constraint(ics55_ecos_rom_256x8_m8_b1_1) {
+        values("0.0914,0.1045,0.1114,0.1200,0.1290",\
+               "0.0933,0.1071,0.1153,0.1245,0.1334",\
+               "0.1007,0.1145,0.1227,0.1319,0.1408",\
+               "0.1170,0.1308,0.1390,0.1482,0.1571",\
+               "0.1511,0.1650,0.1731,0.1823,0.1913");
+        }
+        fall_constraint(ics55_ecos_rom_256x8_m8_b1_1) {
+        values("0.0914,0.1045,0.1114,0.1200,0.1290",\
+               "0.0933,0.1071,0.1153,0.1245,0.1334",\
+               "0.1007,0.1145,0.1227,0.1319,0.1408",\
+               "0.1170,0.1308,0.1390,0.1482,0.1571",\
+               "0.1511,0.1650,0.1731,0.1823,0.1913");
+        }
+      }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  pin(CLK) {
+    related_power_pin : VDD;
+    related_ground_pin : VSS;
+    direction : input ;    
+    capacitance : 0.0063;
+    max_transition : 0.4;
+    clock : true;
+    timing() {
+      related_pin : "CLK";
+      when : "!CEB";
+      sdf_cond : "sdfcond_CLK";
+      timing_type : min_pulse_width;
+      rise_constraint(ics55_ecos_rom_256x8_m8_b1_2) {
+        values("0.1330,0.1468,0.1549,0.1642,0.1731");
+      }
+      fall_constraint(ics55_ecos_rom_256x8_m8_b1_2) {
+        values("0.3011,0.3131,0.3233,0.3413,0.3700");
+      }
+    }
+      timing() {
+        related_pin : "CLK";
+        when : "!MARE & !CEB";
+        sdf_cond : "sdfcond_CLK";
+        timing_type : minimum_period;
+        rise_constraint(ics55_ecos_rom_256x8_m8_b1_2) {
+        values("0.7601,0.7601,0.7601,0.7601,0.7601");
+        }
+        fall_constraint(ics55_ecos_rom_256x8_m8_b1_2) {
+        values("0.7601,0.7601,0.7601,0.7601,0.7601");
+        }
+      }
+      timing() {
+        related_pin : "CLK";
+        when : "!CEB & MARE & !MAR[3] & MAR[2] & MAR[1] & MAR[0]";
+        sdf_cond : "sdfcond_CLK7";
+        timing_type : minimum_period;
+        rise_constraint(ics55_ecos_rom_256x8_m8_b1_2) {
+        values("0.7601,0.7601,0.7601,0.7601,0.7601");
+        }
+        fall_constraint(ics55_ecos_rom_256x8_m8_b1_2) {
+        values("0.7601,0.7601,0.7601,0.7601,0.7601");
+        }
+      }
+
+
+       internal_power () {
+         related_pg_pin : "VDD";
+         when : "!MARE & !CEB";
+         rise_power(POWER) {
+            values("1.249076400000, 1.249076400000, 1.249076400000, 1.249076400000, 1.249076400000");
+         }
+         fall_power(POWER) {
+            values("0.0, 0.0, 0.0, 0.0, 0.0");
+         }
+       }
+       internal_power () {
+         related_pg_pin : "VDD";
+         when : "!CEB & MARE & !MAR[3] & MAR[2] & MAR[1] & MAR[0]";
+         rise_power(POWER) {
+            values("1.249076400000, 1.249076400000, 1.249076400000, 1.249076400000, 1.249076400000");
+         }
+         fall_power(POWER) {
+            values("0.0, 0.0, 0.0, 0.0, 0.0");
+         }
+       }
+  } 
+
+
+
+
+
+}
+}
+

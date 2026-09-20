@@ -1,0 +1,20 @@
+set_cpf_version 2.0
+set_macro_model ics55_ecos_rom_256x8_m8_b1
+create_nominal_condition -name on -voltage 1.2
+create_nominal_condition -name off -voltage 0
+
+create_power_domain -name ics55_ecos_rom_256x8_m8_b1_VDDdomain \
+                    -boundary_ports { A[*] Q[*] CEB CLK  MAR[*] MARE 
+		    } \
+		    -default
+
+update_power_domain -name ics55_ecos_rom_256x8_m8_b1_VDDdomain -primary_power_net VDD \
+                    -primary_ground_net VSS
+
+create_power_mode -name ON_MODE -domain_conditions {ics55_ecos_rom_256x8_m8_b1_VDDdomain@on} -default
+create_power_mode -name OFF_MODE -domain_conditions {ics55_ecos_rom_256x8_m8_b1_VDDdomain@off}
+
+
+ 
+
+end_macro_model

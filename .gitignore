@@ -2,3 +2,6 @@ __pycache__/
 *.py[cod]
 sim/vectors/
 link.txt
+/yosys-sta/
+/sta-results/
+/backend/
