@@ -33,7 +33,7 @@
 保存修改后，运行下列命令，使用官方应用重新导出所有格式：
 
 ```sh
-python3 output/schematic/export_drawio.py
+python3 artifacts/schematic/export_drawio.py
 ```
 
 导出脚本默认使用本机 `/snap/drawio/current/app/drawio` 和 `xvfb-run`；可通过 `--application` 指定应用路径，已有显示环境可加 `--no-xvfb`。PDF 以 `--all-pages --crop` 导出；PNG 使用 1-based `--page-index`、`--scale 3.125`，白底约 5085 × 3210 像素。实际导出命令、应用版本及源/输出 SHA-256 记录在 `export_manifest.json`。
@@ -41,8 +41,8 @@ python3 output/schematic/export_drawio.py
 如需从本次审核确定的结构重新生成源文件，运行：
 
 ```sh
-python3 output/schematic/build_schematic.py
-python3 output/schematic/export_drawio.py
+python3 artifacts/schematic/build_schematic.py
+python3 artifacts/schematic/export_drawio.py
 ```
 
 生成器会覆盖该目录的同名图形文件，也会覆盖对 drawio 的手工修改。手工修改后通常只运行导出脚本；需要重新生成时请先另存手工版本。生成器不自动解析未来 RTL 变更。

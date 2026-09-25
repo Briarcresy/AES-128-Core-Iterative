@@ -19,7 +19,7 @@
 在仓库根目录执行以下命令可重新生成 draw.io 文件：
 
 ```bash
-python3 output/architecture/export_drawio.py
+python3 artifacts/architecture/export_drawio.py
 ```
 
 生成脚本使用 Python 3 与 `pycairo` 测量字体；同目录的 SVG 是生成中间文件。`.drawio` 文件本身不依赖 Python，可直接打开编辑。脚本复现的是本次经人工 RTL 审阅确定的架构，不会自动解析后续 RTL 修改。
@@ -147,7 +147,7 @@ new_key = {w0, w1, w2, w3}
 
 已使用本机 draw.io 31.3.2 打开并导出五页 `.drawio` 合集，逐页检查模块边界、箭头端点、标签层级、末轮旁路及两条主要反馈路径。五个独立文件与合集对应页面使用相同的原生图元；XML 中没有嵌入图片。
 
-本次核对所用 RTL 和 ROM 的 SHA-256 摘要保存在 [rtl_sources.sha256](rtl_sources.sha256)。在仓库根目录运行 `sha256sum -c output/architecture/rtl_sources.sha256` 可检查后续源文件是否发生变化。
+本次核对所用 RTL 和 ROM 的 SHA-256 摘要保存在 [rtl_sources.sha256](rtl_sources.sha256)。在仓库根目录运行 `sha256sum -c artifacts/architecture/rtl_sources.sha256` 可检查后续源文件是否发生变化。
 
 本次使用 Icarus Verilog 的 `-g2005`，直接编译当前 `rtl/core/*.v`，运行既有 [AES testbench](../../tests/tb_aes128_iterative.v) 和 [S-box testbench](../../tests/tb_sbox_byte.v)：6 组加密向量通过，20-cycle latency、`busy` 和单周期 `done` 检查通过；S-box 全部 256 个地址的查表一致性检查通过。S-box 测试的期望值也读取同一 ROM 文件，因此该项验证的是地址到文件内容的映射，不是独立推导 S-box 数学定义的证明。
 

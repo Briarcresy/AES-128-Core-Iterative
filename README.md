@@ -17,6 +17,8 @@
 
 ## 仿真
 
+目录用途、结果位置和旧路径迁移见 [目录说明](docs/directory-layout.md)。
+
 安装 Icarus Verilog 后，在仓库根目录运行：
 
 ```sh
@@ -27,8 +29,8 @@ make test
 
 ## 后端设计预览
 
-![ECOS Studio 后端工程的主要指标截图](output/pdf/key_metrics.png)
+![ECOS Studio 后端工程的主要指标截图](artifacts/pdf/key_metrics.png)
 
-![ECOS Studio 后端设计版图预览](output/pdf/aes128-iterative.png)
+![ECOS Studio 后端设计版图预览](artifacts/pdf/aes128-iterative.png)
 
-这张图是 ECOS Studio 后端工程快照，**尚未正确集成 S-box ROM 宏**，不能视为最终流片版图或签核结果。现有综合、面积与时序数据及其限制见 [设计报告（PDF）](output/pdf/aes128_design_report.pdf)。
+这张图是 ECOS Studio 后端工程快照，**尚未正确集成 S-box ROM 宏**，不能视为最终流片版图或签核结果。现有综合、面积与时序数据及其限制见 [设计报告（PDF）](artifacts/pdf/aes128_design_report.pdf)。

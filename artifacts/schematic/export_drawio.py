@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Export the editable source with the installed official draw.io application.
 
-Run from any directory: python3 output/schematic/export_drawio.py
+Run from any directory: python3 artifacts/schematic/export_drawio.py
 The application performs all rendering; this script only invokes its CLI and
 records provenance. Linux requires xvfb-run unless --no-xvfb is supplied.
 """

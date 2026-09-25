@@ -1,8 +1,7 @@
 __pycache__/
 *.py[cod]
 sim/vectors/
-link.txt
+/docs/links.txt
 /yosys-sta/
-/sta-results/
 /backend/
 /backend_new/
