@@ -5,3 +5,5 @@ sim/vectors/
 /yosys-sta/
 /backend/
 /backend_new/
+/artifacts/frequency-audit/
+/aes-mpc-ecc/

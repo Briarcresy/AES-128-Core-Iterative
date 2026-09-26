@@ -17,7 +17,7 @@
 
 ## 仿真
 
-目录用途、结果位置和旧路径迁移见 [目录说明](docs/directory-layout.md)。
+目录用途和结果位置见 [目录说明](docs/directory-layout.md)。
 
 安装 Icarus Verilog 后，在仓库根目录运行：
 
@@ -27,10 +27,44 @@ make test
 
 该命令依次运行 ROM、MixColumns、核心和封装层测试。单项测试可使用 `make test-rom`、`make test-mix`、`make test-core` 或 `make test-wrapper`。
 
-## 后端设计预览
+## 最终流片版本
 
-![ECOS Studio 后端工程的主要指标截图](artifacts/pdf/key_metrics.png)
+项目最终流片结果为 aes-mpc-ecc/ws-area20：ICS55 工艺，20 MHz，核心利用率和布局目标密度均为 50%，综合策略 AREA 0。后端流程、13 个 STA 工况、LEC、DRC 和 LVS 检查已完成，且已按此版本下单。
 
-![ECOS Studio 后端设计版图预览](artifacts/pdf/aes128-iterative.png)
+### 最终 RCX 后布局
 
-这张图是 ECOS Studio 后端工程快照，**尚未正确集成 S-box ROM 宏**，不能视为最终流片版图或签核结果。现有综合、面积与时序数据及其限制见 [设计报告（PDF）](artifacts/pdf/aes128_design_report.pdf)。
+![AES-128 加密核 RCX 后布局图](aes-mpc-ecc/signoff/ws-area20/aes128-iterative_RCX.png)
+
+### 后端结果指标
+
+| 类别 | 指标 | 结果 |
+|---|---|---:|
+| 配置 | 目标时钟频率 / 周期 | 20 MHz / 50 ns |
+| 配置 | 核心利用率设置 | 50% |
+| 配置 | 布局目标密度 | 50% |
+| 配置 | 综合策略 | AREA 0 |
+| 面积 | Die 尺寸 | 158.4 × 158.4 µm |
+| 面积 | Die 面积 | 25,090.56 µm² |
+| 面积 | Core 面积 | 22,022.56 µm² |
+| 面积 | 后端报告核心利用率 | 55% |
+| 面积 | 综合标准单元面积（不含 ROM） | 10,991.85 µm² |
+| 面积 | 综合标准单元数量 | 3,754 |
+| 时序 | STA 工况 | 13/13 通过 |
+| 时序 | 最差 Setup WNS | +3.981 ns（MAX_125/Cworst） |
+| 时序 | 最差 Hold WNS | +0.071 ns（MIN_m40/Cbest） |
+| 时序 | Setup / Hold TNS 与违例数 | 0 ns / 0 ns；0 / 0 |
+| 物理验证 | DRC / LVS 违例 | 0 / 0 |
+| 逻辑验证 | 综合后 LEC / 布线后 LEC | 通过 / 通过 |
+| 寄生参数 | RCX SPEF 覆盖 / 解析失败 | 9/9 / 0 |
+| 流程 | 后端步骤 | 15/15 成功 |
+| 签核检查 | 通过 / 阻塞 / 提醒 | 34 / 0 / 4 |
+
+功耗仅有综合阶段估算：动态功耗 125.68 µW、漏电功耗 12.19 µW；该估算未作为最终功耗签核结果。ROM 阵列版图仍按订单备注由平台完成内容替换和集成。
+
+ECOS Factory 提交文件及 ROM 内容附件位于 [最终交付目录](aes-mpc-ecc/signoff/ws-area20/)。ROM 内容替换要求见目录内的 rom-order-note.txt。配置、运行状态和签核说明见 [ECC 后端指南](docs/ecc-backend.md) 与 [最终流片版本记录](docs/ecc-area-optimization.md)。
+
+ECC 导出的 .v 和 .def 描述用户模块 Aes128Iterative。ROM 存储阵列版图按订单备注由平台替换内容并集成。
+
+## ECC 后端
+
+最终流片版本的配置、检查和 `.v`/`.def` 交付步骤见 [ECC 后端指南](docs/ecc-backend.md)。
