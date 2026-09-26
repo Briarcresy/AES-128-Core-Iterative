@@ -1,0 +1,7 @@
+{
+  "aes128-iterative.v": "48f42210492b89c95ea8e831459f9f89255baaa2670f9cf4c41d948f64804f83",
+  "aes128-iterative.def": "a47eed1ca2a8804f6262c0571e8e6ccec82c38219aaa8d84ddfc1c433c6c78ae",
+  "ics55_ecos_rom_256x8_m8_b1.romcode": "3d4a278601a7f4af4a7128565315a54a6c00995444d26f977f0f4a30aefba03d",
+  "sbox.mem": "40f17fbbde65f832529d6096b0501bc603c838cc08a4cb5deeadfe28d74c092c",
+  "rom-order-note.txt": "17eabd4264abb8b1cb66dbdbd8d236ecc72a937deb7db9e6b9660027dd8e9240"
+}
